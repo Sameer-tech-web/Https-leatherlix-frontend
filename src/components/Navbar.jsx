@@ -14,18 +14,22 @@ export default function Navbar() {
     setMobileMenuOpen((currentState) => !currentState);
   };
 
+  // Safe Fallbacks
+  const brandName = brand?.name || 'Leatherlix';
+  const linksList = navLinks || [];
+
   return (
     <header className="sticky top-0 z-50 border-b border-stone-200/90 bg-cream/95 backdrop-blur-md">
       <div className="container-shell flex h-[74px] items-center justify-between">
-        {/* Brand Logo */}
+        {/* Brand */}
         <a
           href="#top"
           onClick={closeMobileMenu}
           className="flex min-w-0 items-center gap-3"
-          aria-label={`${brand.name} home`}
+          aria-label={`${brandName} home`}
         >
           <span className="shrink-0 text-[29px] font-extrabold tracking-[-0.06em] text-teal sm:text-[30px]">
-            {brand.name}
+            {brandName}
           </span>
 
           <span className="hidden border-l border-stone-300 pl-3 text-[10px] font-bold uppercase tracking-[0.18em] text-stone-500 sm:block">
@@ -38,13 +42,13 @@ export default function Navbar() {
           className="hidden items-center gap-5 lg:flex xl:gap-6"
           aria-label="Primary navigation"
         >
-          {navLinks.map(({ name, href }) => (
+          {linksList.map((link) => (
             <a
-              key={href}
-              href={href}
+              key={link.href}
+              href={link.href}
               className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.14em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal"
             >
-              {name}
+              {link.label || link.name}
             </a>
           ))}
 
@@ -56,7 +60,7 @@ export default function Navbar() {
           </a>
         </nav>
 
-        {/* Mobile Menu Button (Fixed lg:hidden breakpoint match) */}
+        {/* Mobile Menu Button (Synchronized with lg breakpoint) */}
         <button
           type="button"
           onClick={toggleMobileMenu}
@@ -95,14 +99,14 @@ export default function Navbar() {
             className="container-shell flex flex-col py-3"
             aria-label="Mobile navigation"
           >
-            {navLinks.map(({ name, href }) => (
+            {linksList.map((link) => (
               <a
-                key={href}
-                href={href}
+                key={link.href}
+                href={link.href}
                 onClick={closeMobileMenu}
                 className="border-b border-stone-200 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal"
               >
-                {name}
+                {link.label || link.name}
               </a>
             ))}
 
