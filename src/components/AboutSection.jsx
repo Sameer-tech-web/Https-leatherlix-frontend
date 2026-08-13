@@ -14,14 +14,12 @@ const aboutCards = [
     text:
       'KTM Leather traces its roots to 1935 and has expanded across multiple leather applications over several generations.',
   },
-
   {
     icon: Globe2,
     title: 'Global Orientation',
     text:
       'KTM describes an international footprint serving customers and partners across major global regions.',
   },
-
   {
     icon: RefreshCw,
     title: 'Product Development',
@@ -31,19 +29,16 @@ const aboutCards = [
 ];
 
 export default function AboutSection() {
+  const historyList = history || [];
+
   return (
     <section
       id="about"
       className="border-y border-stone-200 bg-white/45 py-16 sm:py-24"
     >
       <div className="container-shell">
-        {/* =====================================================
-            MAIN ABOUT CONTENT
-        ====================================================== */}
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          {/* ===================================================
-              LEFT COLUMN
-          ==================================================== */}
+          {/* Left Column */}
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-coral">
               About the Manufacturer
@@ -60,7 +55,6 @@ export default function AboutSection() {
               accessories and other leather-consuming industries.
             </p>
 
-            {/* History Highlight */}
             <div className="mt-7 rounded-2xl border border-teal/15 bg-teal/5 p-5">
               <div className="flex items-start gap-3">
                 <History
@@ -84,16 +78,14 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* ===================================================
-              RIGHT COLUMN — ABOUT CARDS
-          ==================================================== */}
+          {/* Right Column (Cards) */}
           <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
             {aboutCards.map(({ icon: Icon, title, text }) => (
               <article
                 key={title}
                 className="rounded-2xl border border-stone-200 bg-white p-6 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/20"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal/10 text-teal">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal/8 text-teal">
                   <Icon
                     size={20}
                     aria-hidden="true"
@@ -112,38 +104,28 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* =====================================================
-            HISTORY TIMELINE (Fixed Data Structure & Responsiveness)
-        ====================================================== */}
-        <div className="mt-10 overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-soft">
-          <div className="divide-y divide-stone-200">
-            {(history || []).map((item, index) => {
-              // Dual-format safety: supports both [year, event] arrays AND { year, event/text } objects
-              const year = Array.isArray(item) ? item[0] : item?.year;
-              const eventText = Array.isArray(item) 
-                ? item[1] 
-                : (item?.event || item?.text || item?.description);
+        {/* Dynamic Vertical Timeline */}
+        <div className="mt-10 overflow-hidden rounded-2xl border border-stone-200 bg-white p-6 shadow-soft sm:p-8">
+          <h3 className="text-lg font-extrabold text-ink">
+            Historical Milestones
+          </h3>
 
-              return (
-                <div
-                  key={`${year || index}-${index}`}
-                  className="grid grid-cols-1 gap-2 p-4 sm:grid-cols-[120px_1fr] sm:gap-4 sm:p-5"
-                >
-                  {/* Year Badge */}
-                  <div>
-                    <span className="inline-block rounded-md bg-teal/10 px-2.5 py-1 text-xs font-extrabold text-teal sm:bg-transparent sm:p-0 sm:text-sm">
-                      {year}
-                    </span>
-                  </div>
+          <ol className="mt-6 flex flex-col gap-4 divide-y divide-stone-100">
+            {historyList.map((item, index) => (
+              <li
+                key={`${item.year}-${index}`}
+                className="grid grid-cols-[80px_1fr] gap-4 pt-4 first:pt-0 sm:grid-cols-[110px_1fr] sm:gap-6"
+              >
+                <span className="text-sm font-extrabold text-teal">
+                  {item.year}
+                </span>
 
-                  {/* Event Text */}
-                  <div className="text-sm leading-6 text-stone-600">
-                    {eventText}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                <span className="text-sm leading-6 text-stone-600">
+                  {item.detail}
+                </span>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
