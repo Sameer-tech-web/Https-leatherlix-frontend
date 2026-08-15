@@ -1,7 +1,18 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { brand, navLinks } from '../data/siteData';
+import { brand } from '../data/siteData';
+
+const navigationLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'Collections', href: '/#collections' },
+  { name: 'About', href: '/about' },
+  { name: 'Quality', href: '/quality' },
+  { name: 'Sustainability', href: '/sustainability' },
+  { name: 'Compliance', href: '/compliance' },
+  { name: 'Contact', href: '/contact' },
+];
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,46 +25,50 @@ export default function Navbar() {
     setMobileMenuOpen((currentState) => !currentState);
   };
 
+  const brandName = brand?.name || 'Leatherlix';
+
   return (
     <header className="sticky top-0 z-50 border-b border-stone-200/90 bg-cream/95 backdrop-blur-md">
-      <div className="container-shell flex h-[74px] items-center justify-between">
+      <div className="container-shell flex min-h-[74px] items-center justify-between gap-6">
         {/* Brand */}
-        <a
-          href="#top"
+        <Link
+          to="/"
           onClick={closeMobileMenu}
-          className="flex min-w-0 items-center gap-3"
-          aria-label={`${brand.name} home`}
+          className="flex min-w-0 shrink-0 items-center gap-3"
+          aria-label={`${brandName} home`}
         >
-          <span className="shrink-0 text-[29px] font-extrabold tracking-[-0.06em] text-teal sm:text-[30px]">
-            {brand.name}
+          <span className="text-[29px] font-extrabold tracking-[-0.06em] text-teal sm:text-[30px]">
+            {brandName}
           </span>
 
           <span className="hidden border-l border-stone-300 pl-3 text-[10px] font-bold uppercase tracking-[0.18em] text-stone-500 sm:block">
             Premium Leather
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav
-          className="hidden items-center gap-5 lg:flex xl:gap-6"
+          className="hidden flex-1 items-center justify-end gap-5 md:flex xl:gap-6"
           aria-label="Primary navigation"
         >
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.14em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal"
+          {navigationLinks.map((link, index) => (
+            <Link
+              key={link.href || index}
+              to={link.href}
+              onClick={closeMobileMenu}
+              className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.13em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
 
-          <a
-            href="#contact"
-            className="whitespace-nowrap rounded-full bg-teal px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-soft transition-colors duration-200 hover:bg-tealDark focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-cream"
+          <Link
+            to="/contact"
+            onClick={closeMobileMenu}
+            className="shrink-0 whitespace-nowrap rounded-full bg-teal px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-soft transition-colors duration-200 hover:bg-tealDark focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-cream"
           >
             Request Samples
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -67,7 +82,7 @@ export default function Navbar() {
           }
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation"
-          className="rounded-lg p-2 text-stone-700 transition-colors duration-200 hover:bg-white hover:text-teal focus:outline-none focus:ring-2 focus:ring-teal md:hidden"
+          className="shrink-0 rounded-lg p-2 text-stone-700 transition-colors duration-200 hover:bg-white hover:text-teal focus:outline-none focus:ring-2 focus:ring-teal md:hidden"
         >
           {mobileMenuOpen ? (
             <X
@@ -95,24 +110,24 @@ export default function Navbar() {
             className="container-shell flex flex-col py-3"
             aria-label="Mobile navigation"
           >
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+            {navigationLinks.map((link, index) => (
+              <Link
+                key={link.href || index}
+                to={link.href}
                 onClick={closeMobileMenu}
                 className="border-b border-stone-200 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
 
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               onClick={closeMobileMenu}
               className="mt-4 rounded-full bg-teal px-5 py-3 text-center text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-soft transition-colors duration-200 hover:bg-tealDark focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-cream"
             >
               Request Samples
-            </a>
+            </Link>
           </nav>
         </div>
       )}
