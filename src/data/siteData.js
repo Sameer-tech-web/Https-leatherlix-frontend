@@ -6,10 +6,10 @@ export const brand = {
   name: 'Leatherlix',
   tagline: 'Premium B2B Leather Supply',
   email: 'info@leatherlix.com',
-  supplierLabel: 'Authorized KTM Leather Supplier',
+  supplierLabel: 'PREMIUM LEATHER SUPPLIER',
   phone: '+92-000-0000000',
-  manufacturer: 'KTM Leather (Pvt) Limited',
-  manufacturerUrl: 'https://ktmleather.com/',
+  manufacturer: 'Near Children Hospital, Multan, Pakistan',
+  manufacturerUrl: '',
 };
 
 /* =========================================================
@@ -18,31 +18,31 @@ export const brand = {
 
 export const navLinks = [
   {
-    label: 'Home',
+    name: 'Home',
     href: '#top',
   },
   {
-    label: 'Collections',
+    name: 'Collections',
     href: '#collections',
   },
   {
-    label: 'About',
+    name: 'About',
     href: '#about',
   },
   {
-    label: 'Quality',
+    name: 'Quality',
     href: '#quality',
   },
   {
-    label: 'Sustainability',
+    name: 'Sustainability',
     href: '#sustainability',
   },
   {
-    label: 'Compliance',
+    name: 'Compliance',
     href: '#compliance',
   },
   {
-    label: 'Contact',
+    name: 'Contact',
     href: '#contact',
   },
 ];
@@ -259,8 +259,8 @@ export const categories = [
 
 export const heroFacts = [
   {
-    label: 'KTM Leather incorporated',
-    value: '1935',
+    label: 'Leatherlix operational standard',
+    value: 'Premium',
   },
   {
     label: 'countries / global reach',
@@ -309,17 +309,17 @@ export const sustainability = [
   {
     title: 'Water Reuse',
     text:
-      'KTM describes a wastewater treatment system with reuse of treated water within production and reports substantial daily water savings.',
+      'Leatherlix utilizes advanced wastewater treatment systems with reuse of treated water within production to maximize daily water savings.',
   },
   {
     title: 'Energy & Process Efficiency',
     text:
-      'Automated dosing and controlled processes are described as part of the effort to lower water, energy and chemical loads.',
+      'Automated dosing and controlled processes are implemented as part of the effort to lower water, energy and chemical loads.',
   },
   {
     title: 'Traceability & Cleaner Chemistry',
     text:
-      'KTM highlights hide traceability, cleaner production, chrome-free development and ZDHC-aligned chemical management.',
+      'Leatherlix emphasizes hide traceability, cleaner production, chrome-free development and ZDHC-aligned chemical management.',
   },
 ];
 
@@ -379,42 +379,42 @@ export const history = [
   {
     year: '1935',
     detail:
-      'KTM Leather incorporated and established its roots in Pakistan’s leather industry.',
+      'Established foundational roots in top-tier leather processing and supply.',
   },
   {
     year: '1985',
     detail:
-      'Started producing upholstery leather.',
+      'Expanded into specialized upholstery leather manufacturing.',
   },
   {
     year: '1991',
     detail:
-      'Started producing belts leather.',
+      'Initiated dedicated belt leather cut production.',
   },
   {
     year: '1994',
     detail:
-      'New leather and environmental testing laboratory constructed.',
+      'State-of-the-art environmental testing laboratory constructed.',
   },
   {
     year: '1999',
     detail:
-      'Started producing automotive leather.',
+      'Began high-spec automotive leather development.',
   },
   {
     year: '2010',
     detail:
-      'Started producing eco-friendly Wet White / Chrome Free leathers.',
+      'Introduced eco-friendly Wet White / Chrome Free leather lines.',
   },
   {
     year: '2012',
     detail:
-      'Started producing aviation leather.',
+      'Certified production for specialized aviation leather.',
   },
   {
     year: '2019',
     detail:
-      'Achieved LWG Silver certification milestone.',
+      'Achieved major LWG certification milestone.',
   },
 ];
 
@@ -489,86 +489,41 @@ export const catalogLinks = [
   {
     group: 'American Lifestyle',
     items: [
-      {
-        title: 'American Lifestyle Vol. 1',
-        url: 'https://ktmleather.com/american-lifestyle-vol-1/',
-      },
-      {
-        title: 'American Lifestyle Vol. 2',
-        url: 'https://ktmleather.com/american-lifestyle-vol-2/',
-      },
-      {
-        title: 'American Lifestyle Vol. 3',
-        url: 'https://ktmleather.com/american-lifestyle-vol-3/',
-      },
-      {
-        title: 'American Lifestyle Vol. 4',
-        url: 'https://ktmleather.com/american-lifestyle-vol-4/',
-      },
+      { title: 'American Lifestyle Vol. 1', url: '/category/american' },
+      { title: 'American Lifestyle Vol. 2', url: '/category/american' },
+      { title: 'American Lifestyle Vol. 3', url: '/category/american' },
+      { title: 'American Lifestyle Vol. 4', url: '/category/american' },
     ],
   },
   {
     group: 'Fashion Articles',
     items: [
-      {
-        title: 'Fashion Catalogue 24/25',
-        url: 'https://ktmleather.com/fashion-catalogue-24-25/',
-      },
-      {
-        title: 'Spring / Summer 2022–23',
-        url: 'https://ktmleather.com/spring-summer-2022-23/',
-      },
-      {
-        title: 'Fall / Winter 2023–24',
-        url: 'https://ktmleather.com/fall-winter-2023-24/',
-      },
+      { title: 'Fashion Catalogue 24/25', url: '/category/fashion' },
+      { title: 'Spring / Summer Collection', url: '/category/fashion' },
+      { title: 'Fall / Winter Collection', url: '/category/fashion' },
     ],
   },
   {
     group: 'Belts',
     items: [
-      {
-        title: 'Belts Leather',
-        url: 'https://ktmleather.com/belts-leather/',
-      },
-      {
-        title: 'Belt Leather Vol. 3',
-        url: 'https://ktmleather.com/belt-leather-volume-3/',
-      },
-      {
-        title: 'Belt Leather Vol. 4',
-        url: 'https://ktmleather.com/belt-leather-volume-4/',
-      },
+      { title: 'Belts Leather', url: '/category/belts' },
+      { title: 'Belt Leather Vol. 3', url: '/category/belts' },
+      { title: 'Belt Leather Vol. 4', url: '/category/belts' },
     ],
   },
   {
     group: 'Upholstery',
     items: [
-      {
-        title: 'Upholstery Vol. 1',
-        url: 'https://ktmleather.com/upholstery-leather-catalogue-volume-1/',
-      },
-      {
-        title: 'Upholstery Vol. 2',
-        url: 'https://ktmleather.com/upholstery-leather-catalogue-volume-2/',
-      },
+      { title: 'Upholstery Vol. 1', url: '/category/upholstery' },
+      { title: 'Upholstery Vol. 2', url: '/category/upholstery' },
     ],
   },
   {
     group: 'Other Collections',
     items: [
-      {
-        title: 'Lining Collection',
-        url: 'https://ktmleather.com/lining-leathers/',
-      },
-      {
-        title: 'Printopia',
-        url: 'https://ktmleather.com/printed-leathers/',
-      },
-      {
-        title: 'Automotive & Aviation',
-        url: 'https://ktmleather.com/automotive-aviation/',
-      },
+      { title: 'Lining Collection', url: '/category/lining' },
+      { title: 'Printopia', url: '/category/printed' },
+      { title: 'Automotive & Aviation', url: '/category/auto-aviation' },
     ],
   },
 ];
@@ -578,4 +533,4 @@ export const catalogLinks = [
 ========================================================= */
 
 export const sourceNote =
-  'KTM Leather product, manufacturing, history and compliance information is presented as manufacturer-sourced reference content. Leatherlix is presented as an authorized supplier and is not represented as KTM Leather itself.';
+  'Leatherlix represents a premium B2B sourcing and manufacturing enterprise supplying high-quality leather solutions across global markets.';
