@@ -116,10 +116,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* High-Impact Executive Metrics Bar */}
+      {/* Executive Quick Facts Grid */}
       <div className="mt-12 grid grid-cols-2 divide-x divide-y divide-stone-200/80 rounded-2xl border border-stone-200/80 bg-white/70 shadow-sm backdrop-blur-sm sm:grid-cols-4 sm:divide-y-0">
         {factsList.map((fact, index) => {
-          const isGoldRating = fact.value?.toLowerCase().includes('gold') || fact.label?.toLowerCase().includes('lwg');
+          const isGoldRating =
+            fact.value?.toLowerCase().includes('gold') ||
+            fact.label?.toLowerCase().includes('lwg');
 
           return (
             <div
@@ -127,28 +129,21 @@ export default function Hero() {
               className="group relative flex flex-col items-center justify-center p-6 text-center transition-all duration-300 hover:bg-white/90 sm:p-8"
             >
               {isGoldRating ? (
-                /* Specialized LWG Gold Certification Display */
+                /* LWG Gold Certification Badge Block */
                 <div className="flex flex-col items-center justify-center">
-                  <div className="mb-2 transition-transform duration-300 group-hover:scale-105">
+                  <div className="mb-1 transition-transform duration-300 group-hover:scale-105">
                     <img
-                      src="/assets/lwg-gold.png"
+                      src="/assets/lwg-gold.svg.jpg"
                       alt="LWG Gold Rated Certification Badge"
-                      className="h-16 w-auto object-contain drop-shadow-sm"
-                      onError={(e) => {
-                        // Fallback UI if image isn't loaded yet in assets folder
-                        e.currentTarget.style.display = 'none';
-                      }}
+                      className="h-16 w-auto object-contain drop-shadow-sm sm:h-20"
                     />
                   </div>
-                  <p className="text-2xl font-black text-[#B8860B] sm:text-3xl">
-                    {fact.value}
-                  </p>
                   <p className="mt-1 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
                     {fact.label}
                   </p>
                 </div>
               ) : (
-                /* Executive Numbers Display */
+                /* Clean Stat Number Block */
                 <div className="flex flex-col items-center justify-center">
                   <span className="text-3xl font-black tracking-tight text-teal transition-transform duration-300 group-hover:scale-105 sm:text-4xl">
                     {fact.value}
