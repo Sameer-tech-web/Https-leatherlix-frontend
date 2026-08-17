@@ -2,7 +2,6 @@ import {
   ArrowRight,
   Award,
   Globe2,
-  Layers,
   ShieldCheck,
 } from 'lucide-react';
 
@@ -10,9 +9,6 @@ import {
   brand,
   heroFacts,
 } from '../data/siteData';
-
-// Stats grid ke uper render hone wale Lucide Icons
-const iconMap = [ShieldCheck, Globe2, Layers, Award];
 
 export default function Hero() {
   const brandName = brand?.name || 'Leatherlix';
@@ -120,34 +116,22 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Quick Facts Grid */}
-      <div className="mt-12 grid grid-cols-2 divide-x divide-y divide-stone-200 border-y border-stone-200 bg-white/45 sm:grid-cols-4 sm:divide-y-0">
-        {factsList.map((fact, index) => {
-          const IconComponent = iconMap[index % iconMap.length];
+      {/* Quick Facts Grid — Clean, Professional Metrics Display */}
+      <div className="mt-12 grid grid-cols-2 divide-x divide-y divide-stone-200/80 border-y border-stone-200/80 bg-white/60 shadow-sm sm:grid-cols-4 sm:divide-y-0">
+        {factsList.map((fact, index) => (
+          <div
+            key={fact.label || index}
+            className="flex flex-col items-center justify-center px-4 py-8 text-center sm:px-6"
+          >
+            <p className="text-3xl font-black tracking-tight text-teal sm:text-4xl">
+              {fact.value}
+            </p>
 
-          return (
-            <div
-              key={fact.label || index}
-              className="flex flex-col items-center justify-center px-4 py-6 text-center sm:px-5"
-            >
-              <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl bg-teal/10 text-teal">
-                <IconComponent
-                  size={18}
-                  strokeWidth={2}
-                  aria-hidden="true"
-                />
-              </div>
-
-              <p className="text-2xl font-extrabold tracking-[-0.04em] text-teal sm:text-3xl">
-                {fact.value}
-              </p>
-
-              <p className="mx-auto mt-1 max-w-[170px] text-[9px] font-bold uppercase leading-4 tracking-[0.12em] text-stone-500">
-                {fact.label}
-              </p>
-            </div>
-          );
-        })}
+            <p className="mx-auto mt-2 max-w-[180px] text-[10px] font-bold uppercase leading-relaxed tracking-[0.14em] text-stone-500">
+              {fact.label}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
