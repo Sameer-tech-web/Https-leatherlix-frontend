@@ -1,9 +1,21 @@
-import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+/* =========================================================
+   BRANDING & SUPPLIER INFO
+========================================================= */
 
-import { brand } from '../data/siteData';
+export const brand = {
+  name: 'Leatherlix',
+  supplierLabel: 'Authorized KTM Leather Supplier',
+  email: 'sales@leatherlix.com',
+  phone: '+92-000-0000000',
+  manufacturer: 'KTM Leather (Pvt) Limited',
+  manufacturerUrl: 'https://ktmleather.com/',
+};
 
-const navigationLinks = [
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+export const navLinks = [
   {
     label: 'Home',
     href: '#top',
@@ -34,122 +46,443 @@ const navigationLinks = [
   },
 ];
 
-export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+/* =========================================================
+   COMPLETE PRODUCT CATEGORIES
+========================================================= */
 
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
-  };
+export const categories = [
+  {
+    id: 'american',
+    name: 'American Lifestyles',
+    short: 'Cow & River Bison upper leathers',
+    description:
+      'Upper leathers for dress shoes, casual shoes, Nubuck footwear, boots, work boots, tactical boots and Western boots.',
+    image: '/assets/belt-hero.jpg',
+    page: 'https://ktmleather.com/american-lifestyles/',
+  },
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen((currentState) => !currentState);
-  };
+  {
+    id: 'fashion',
+    name: 'Fashion Articles',
+    short: 'Calf, Kip, Cow, Buffalo & Vachetta',
+    description:
+      'Leather for wallets, handbags, backpacks, briefcases, portfolios and other premium fashion leather goods.',
+    image: '/assets/wallet-hero.jpg',
+    page: 'https://ktmleather.com/fashion-articles/',
+  },
 
-  return (
-    <header className="sticky top-0 z-50 border-b border-stone-200/90 bg-cream/95 backdrop-blur-md">
-      <div className="container-shell flex min-h-[74px] items-center justify-between gap-6">
-        
-        {/* Brand */}
-        <a
-          href="#top"
-          onClick={closeMobileMenu}
-          className="flex min-w-0 shrink-0 items-center gap-3"
-          aria-label={`${brand.name} home`}
-        >
-          <span className="text-[29px] font-extrabold tracking-[-0.06em] text-teal sm:text-[30px]">
-            {brand.name}
-          </span>
+  {
+    id: 'upholstery',
+    name: 'Upholstery / Furniture',
+    short: 'River Bison whole-hide upholstery',
+    description:
+      'Whole-hide upholstery leather for furniture and decorative leather applications, including finished and dyed-crust options.',
+    image: '/assets/belt-card.jpg',
+    page: 'https://ktmleather.com/upholstery/',
+  },
 
-          <span className="hidden border-l border-stone-300 pl-3 text-[10px] font-bold uppercase tracking-[0.18em] text-stone-500 sm:block">
-            Premium Leather
-          </span>
-        </a>
+  {
+    id: 'belts',
+    name: 'Belts Leather',
+    short: 'Single Butts, Double Butts & Doze',
+    description:
+      'River Bison belting leather with smooth and embossed finishing effects, averaging around 3.5–4.0 mm.',
+    image: '/assets/belt-detail.jpg',
+    page: 'https://ktmleather.com/belts-leather/',
+  },
 
-        {/* Desktop Navigation */}
-        <nav
-          className="hidden flex-1 items-center justify-end gap-4 md:flex xl:gap-6"
-          aria-label="Primary navigation"
-        >
-          {navigationLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={closeMobileMenu}
-              className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.13em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal"
-            >
-              {link.label}
-            </a>
-          ))}
+  {
+    id: 'printed',
+    name: 'Printed Leathers',
+    short: 'Printed leather collections',
+    description:
+      'Printed leather options designed for fashion footwear, bags, accessories and other leather-goods applications.',
+    image: '/assets/wallet-card.jpg',
+    page: 'https://ktmleather.com/printed-leathers/',
+  },
 
-          <a
-            href="#contact"
-            onClick={closeMobileMenu}
-            className="shrink-0 whitespace-nowrap rounded-full bg-teal px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-soft transition-colors duration-200 hover:bg-tealDark focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-cream"
-          >
-            Request Samples
-          </a>
-        </nav>
+  {
+    id: 'lining',
+    name: 'Lining Leathers',
+    short: 'Cow & Buffalo + chrome-free options',
+    description:
+      'Lining leathers in drum-dyed, semi-aniline and milled finishes, including chrome-free Cow lining options.',
+    image: '/assets/wallet-features.jpg',
+    page: 'https://ktmleather.com/lining-leathers/',
+  },
 
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          onClick={toggleMobileMenu}
-          aria-label={
-            mobileMenuOpen
-              ? 'Close navigation menu'
-              : 'Open navigation menu'
-          }
-          aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-navigation"
-          className="shrink-0 rounded-lg p-2 text-stone-700 transition-colors duration-200 hover:bg-white hover:text-teal focus:outline-none focus:ring-2 focus:ring-teal md:hidden"
-        >
-          {mobileMenuOpen ? (
-            <X
-              size={22}
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-          ) : (
-            <Menu
-              size={22}
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-          )}
-        </button>
-      </div>
+  {
+    id: 'auto-aviation',
+    name: 'Automotive & Aviation',
+    short: 'Automotive & aviation seating leather',
+    description:
+      'Leather developed for automotive upholstery and aviation seating, including dedicated performance and flame-retardant requirements.',
+    image: '/assets/auto-aviation-hero.jpg',
+    page: 'https://ktmleather.com/automotive-aviation/',
+  },
+];
 
-      {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <div
-          id="mobile-navigation"
-          className="border-t border-stone-200 bg-cream md:hidden"
-        >
-          <nav
-            className="container-shell flex flex-col py-3"
-            aria-label="Mobile navigation"
-          >
-            {navigationLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={closeMobileMenu}
-                className="border-b border-stone-200 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal"
-              >
-                {link.label}
-              </a>
-            ))}
+/* =========================================================
+   HERO / QUICK FACTS
+========================================================= */
 
-            <a
-              href="#contact"
-              onClick={closeMobileMenu}
-              className="mt-4 rounded-full bg-teal px-5 py-3 text-center text-[11px] font-bold uppercase tracking-[0.15em] text-white shadow-soft transition-colors duration-200 hover:bg-tealDark focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2"
-            >
-              Request Samples
-            </a>
-          </nav>
-        </div>
-      )}
-    </header>
-  );
-}
+export const heroFacts = [
+  {
+    label: 'KTM Leather incorporated',
+    value: '1935',
+  },
+
+  {
+    label: 'countries / global reach',
+    value: '54+',
+  },
+
+  {
+    label: 'average belt leather thickness',
+    value: '3.5–4.0 mm',
+  },
+
+  {
+    label: 'LWG environmental rating',
+    value: 'Gold',
+  },
+];
+
+/* =========================================================
+   PRODUCTION PROCESS
+========================================================= */
+
+export const processSteps = [
+  'Raw Hide',
+  'Liming',
+  'Wet Blue',
+  'Crust',
+  'Finish',
+  'Final QC',
+];
+
+/* =========================================================
+   QUALITY TESTING
+========================================================= */
+
+export const qualityTests = [
+  'Physical Inspection',
+  'Physical Testing',
+  'Chemical Testing',
+  'Performance Testing',
+  'Eco-sensitive chemical screening',
+];
+
+/* =========================================================
+   SUSTAINABILITY
+========================================================= */
+
+export const sustainability = [
+  {
+    title: 'Water Reuse',
+    text:
+      'KTM describes a wastewater treatment system with reuse of treated water within production and reports substantial daily water savings.',
+  },
+
+  {
+    title: 'Energy & Process Efficiency',
+    text:
+      'Automated dosing and controlled processes are described as part of the effort to lower water, energy and chemical loads.',
+  },
+
+  {
+    title: 'Traceability & Cleaner Chemistry',
+    text:
+      'KTM highlights hide traceability, cleaner production, chrome-free development and ZDHC-aligned chemical management.',
+  },
+];
+
+/* =========================================================
+   MANAGEMENT CERTIFICATIONS
+========================================================= */
+
+export const managementCertifications = [
+  'ISO 9001:2015 — Quality Management',
+  'ISO 45001:2018 — Health & Safety',
+];
+
+/* =========================================================
+   ENVIRONMENTAL CERTIFICATIONS
+========================================================= */
+
+export const environmentalCertifications = [
+  'LWG Environmental Stewardship Protocol — Gold',
+  'ISO 14001:2015 — Environmental Management',
+  'Higg Index FEM',
+];
+
+/* =========================================================
+   SOCIAL CERTIFICATIONS
+========================================================= */
+
+export const socialCertifications = [
+  'BSCI',
+  'SA 8000 — Social Accountability',
+  'Inditex Social',
+];
+
+/* =========================================================
+   CUSTOMER STANDARDS
+========================================================= */
+
+export const customerStandards = [
+  'Inditex GTW — Green to Wear',
+  'ZDHC — Chemical & Waste Water',
+];
+
+/* =========================================================
+   MEMBERSHIPS
+========================================================= */
+
+export const memberships = [
+  'Leather Naturally',
+  'SATRA',
+  'BLC',
+];
+
+/* =========================================================
+   COMPANY HISTORY
+========================================================= */
+
+export const history = [
+  {
+    year: '1935',
+    detail:
+      'KTM Leather incorporated and established its roots in Pakistan’s leather industry.',
+  },
+
+  {
+    year: '1985',
+    detail:
+      'Started producing upholstery leather.',
+  },
+
+  {
+    year: '1991',
+    detail:
+      'Started producing belts leather.',
+  },
+
+  {
+    year: '1994',
+    detail:
+      'New leather and environmental testing laboratory constructed.',
+  },
+
+  {
+    year: '1999',
+    detail:
+      'Started producing automotive leather.',
+  },
+
+  {
+    year: '2010',
+    detail:
+      'Started producing eco-friendly Wet White / Chrome Free leathers.',
+  },
+
+  {
+    year: '2012',
+    detail:
+      'Started producing aviation leather.',
+  },
+
+  {
+    year: '2019',
+    detail:
+      'Achieved LWG Silver certification milestone.',
+  },
+];
+
+/* =========================================================
+   PRODUCT APPLICATIONS
+========================================================= */
+
+export const applications = [
+  {
+    id: 'footwear',
+    title: 'Footwear',
+    description:
+      'Dress shoes, casual shoes, work boots, tactical boots, Western boots and other footwear applications.',
+    category: 'american',
+  },
+
+  {
+    id: 'bags',
+    title: 'Bags & Leather Goods',
+    description:
+      'Wallets, handbags, backpacks, briefcases, portfolios and design-led leather accessories.',
+    category: 'fashion',
+  },
+
+  {
+    id: 'belting',
+    title: 'Belts',
+    description:
+      'Heavy-duty River Bison belting leather in single butts, double butts and doze shapes.',
+    category: 'belts',
+  },
+
+  {
+    id: 'lining',
+    title: 'Lining Leather',
+    description:
+      'Cow and Buffalo lining materials in drum-dyed, semi-aniline and milled finishes.',
+    category: 'lining',
+  },
+
+  {
+    id: 'furniture',
+    title: 'Furniture & Upholstery',
+    description:
+      'Whole-hide upholstery leather for furniture and decorative interiors.',
+    category: 'upholstery',
+  },
+
+  {
+    id: 'automotive',
+    title: 'Automotive',
+    description:
+      'Leather for automotive upholstery and interior applications.',
+    category: 'auto-aviation',
+  },
+
+  {
+    id: 'aviation',
+    title: 'Aviation',
+    description:
+      'Leather for aviation seating with dedicated performance and flame-retardant requirements.',
+    category: 'auto-aviation',
+  },
+
+  {
+    id: 'printed',
+    title: 'Printed Leather Goods',
+    description:
+      'Printed leather collections for fashion, footwear, bags and accessories.',
+    category: 'printed',
+  },
+];
+
+/* =========================================================
+   PRODUCT CATALOGUE LINKS
+========================================================= */
+
+export const catalogLinks = [
+  {
+    group: 'American Lifestyle',
+
+    items: [
+      {
+        title: 'American Lifestyle Vol. 1',
+        url: 'https://ktmleather.com/american-lifestyle-vol-1/',
+      },
+
+      {
+        title: 'American Lifestyle Vol. 2',
+        url: 'https://ktmleather.com/american-lifestyle-vol-2/',
+      },
+
+      {
+        title: 'American Lifestyle Vol. 3',
+        url: 'https://ktmleather.com/american-lifestyle-vol-3/',
+      },
+
+      {
+        title: 'American Lifestyle Vol. 4',
+        url: 'https://ktmleather.com/american-lifestyle-vol-4/',
+      },
+    ],
+  },
+
+  {
+    group: 'Fashion Articles',
+
+    items: [
+      {
+        title: 'Fashion Catalogue 24/25',
+        url: 'https://ktmleather.com/fashion-catalogue-24-25/',
+      },
+
+      {
+        title: 'Spring / Summer 2022–23',
+        url: 'https://ktmleather.com/spring-summer-2022-23/',
+      },
+
+      {
+        title: 'Fall / Winter 2023–24',
+        url: 'https://ktmleather.com/fall-winter-2023-24/',
+      },
+    ],
+  },
+
+  {
+    group: 'Belts',
+
+    items: [
+      {
+        title: 'Belts Leather',
+        url: 'https://ktmleather.com/belts-leather/',
+      },
+
+      {
+        title: 'Belt Leather Vol. 3',
+        url: 'https://ktmleather.com/belt-leather-volume-3/',
+      },
+
+      {
+        title: 'Belt Leather Vol. 4',
+        url: 'https://ktmleather.com/belt-leather-volume-4/',
+      },
+    ],
+  },
+
+  {
+    group: 'Upholstery',
+
+    items: [
+      {
+        title: 'Upholstery Vol. 1',
+        url: 'https://ktmleather.com/upholstery-leather-catalogue-volume-1/',
+      },
+
+      {
+        title: 'Upholstery Vol. 2',
+        url: 'https://ktmleather.com/upholstery-leather-catalogue-volume-2/',
+      },
+    ],
+  },
+
+  {
+    group: 'Other Collections',
+
+    items: [
+      {
+        title: 'Lining Collection',
+        url: 'https://ktmleather.com/lining-leathers/',
+      },
+
+      {
+        title: 'Printopia',
+        url: 'https://ktmleather.com/printed-leathers/',
+      },
+
+      {
+        title: 'Automotive & Aviation',
+        url: 'https://ktmleather.com/automotive-aviation/',
+      },
+    ],
+  },
+];
+
+/* =========================================================
+   SOURCE / BRANDING NOTE
+========================================================= */
+
+export const sourceNote =
+  'KTM Leather product, manufacturing, history and compliance information is presented as manufacturer-sourced reference content. Leatherlix is presented as an authorized supplier and is not represented as KTM Leather itself.';
