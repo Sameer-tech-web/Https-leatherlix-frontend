@@ -1,36 +1,37 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { brand } from '../data/siteData';
 
 const navigationLinks = [
   {
     name: 'Home',
-    href: '#top',
+    href: '/#top',
   },
   {
     name: 'Collections',
-    href: '#collections',
+    href: '/collections',
   },
   {
     name: 'About',
-    href: '#about',
+    href: '/#about',
   },
   {
     name: 'Quality',
-    href: '#quality',
+    href: '/#quality',
   },
   {
     name: 'Sustainability',
-    href: '#sustainability',
+    href: '/#sustainability',
   },
   {
     name: 'Compliance',
-    href: '#compliance',
+    href: '/#compliance',
   },
   {
     name: 'Contact',
-    href: '#contact',
+    href: '/#contact',
   },
 ];
 
@@ -45,12 +46,43 @@ export default function Navbar() {
     setMobileMenuOpen((currentState) => !currentState);
   };
 
+  const renderNavLink = (link, isMobile = false) => {
+    const isAnchor = link.href.startsWith('/#');
+    const baseClasses = isMobile
+      ? 'border-b border-stone-200 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal'
+      : 'whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.13em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal';
+
+    if (!isAnchor) {
+      return (
+        <Link
+          key={link.href}
+          to={link.href}
+          onClick={closeMobileMenu}
+          className={baseClasses}
+        >
+          {link.name}
+        </Link>
+      );
+    }
+
+    return (
+      <a
+        key={link.href}
+        href={link.href}
+        onClick={closeMobileMenu}
+        className={baseClasses}
+      >
+        {link.name}
+      </a>
+    );
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-stone-200/90 bg-cream/95 backdrop-blur-md">
       <div className="container-shell flex min-h-[74px] items-center justify-between gap-6">
         {/* Brand */}
-        <a
-          href="#top"
+        <Link
+          to="/"
           onClick={closeMobileMenu}
           className="flex min-w-0 shrink-0 items-center gap-3"
           aria-label={`${brand.name} home`}
@@ -62,7 +94,7 @@ export default function Navbar() {
           <span className="hidden border-l border-stone-300 pl-3 text-[10px] font-bold uppercase tracking-[0.18em] text-stone-500 sm:block">
             Premium Leather
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav
@@ -70,20 +102,11 @@ export default function Navbar() {
           aria-label="Primary navigation"
         >
           <div className="hidden items-center gap-4 md:flex xl:gap-6">
-            {navigationLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={closeMobileMenu}
-                className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.13em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navigationLinks.map((link) => renderNavLink(link, false))}
           </div>
 
           <a
-            href="#contact"
+            href="/#contact"
             onClick={closeMobileMenu}
             className="shrink-0 whitespace-nowrap rounded-full bg-teal px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white shadow-soft transition-colors duration-200 hover:bg-tealDark focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-cream"
           >
@@ -130,19 +153,10 @@ export default function Navbar() {
             className="container-shell flex flex-col py-3"
             aria-label="Mobile navigation"
           >
-            {navigationLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={closeMobileMenu}
-                className="border-b border-stone-200 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal"
-              >
-                {link.name}
-              </a>
-            ))}
+            {navigationLinks.map((link) => renderNavLink(link, true))}
 
             <a
-              href="#contact"
+              href="/#contact"
               onClick={closeMobileMenu}
               className="mt-4 rounded-full bg-teal px-5 py-3 text-center text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-soft transition-colors duration-200 hover:bg-tealDark focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-cream"
             >
