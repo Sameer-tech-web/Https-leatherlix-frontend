@@ -1,93 +1,82 @@
-import { useParams, Link } from 'react-router-dom';
-import { categories, catalogLinks } from '../data/siteData';
+import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-export default function CategoryPage() {
-  const { id } = useParams();
+import { categories } from '../data/siteData';
 
-  // Route param 'id' ko siteData ke id ya slug se match karein
-  const category = categories.find(
-    (item) => item.id === id || item.slug === id
-  );
-
-  if (!category) {
-    return (
-      <div className="container-shell py-24 text-center">
-        <h1 className="text-3xl font-bold text-ink">Category Not Found</h1>
-        <p className="mt-2 text-stone-600">The requested category does not exist.</p>
-        <Link
-          to="/"
-          className="mt-6 inline-block rounded-lg bg-teal px-6 py-3 font-bold text-white hover:bg-tealDark"
-        >
-          Back to Collections
-        </Link>
-      </div>
-    );
-  }
-
-  // Matching catalog links (if available)
-  const matchingCatalog = catalogLinks.find((cat) =>
-    cat.group.toLowerCase().includes(category.name.toLowerCase().split(' ')[0])
-  );
-
+export default function CategoryGrid() {
   return (
-    <div className="container-shell py-16 sm:py-24">
-      <Link
-        to="/"
-        className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-teal hover:underline"
-      >
-        ← Back to Collections
-      </Link>
+    <section id="collections" className="container-shell py-16 sm:py-24">
+      {/* SECTION HEADER */}
+      <div className="max-w-3xl">
+        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-coral">
+          Complete Product Portfolio
+        </p>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-2">
-        <div className="overflow-hidden rounded-2xl border border-stone-200">
-          <img
-            src={category.image || '/assets/placeholder-leather.jpg'}
-            alt={category.name}
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <h2 className="display-title mt-2 text-4xl font-extrabold text-ink sm:text-5xl">
+          Every major leather collection in one sourcing destination.
+        </h2>
 
-        <div>
-          <span className="text-xs font-bold uppercase tracking-widest text-coral">
-            {category.short}
-          </span>
-          <h1 className="mt-2 text-3xl font-extrabold text-ink sm:text-4xl">
-            {category.name}
-          </h1>
-          <p className="mt-4 text-stone-600 leading-relaxed">
-            {category.description}
-          </p>
-
-          {matchingCatalog && (
-            <div className="mt-8">
-              <h3 className="text-lg font-bold text-ink">Related Catalogues</h3>
-              <ul className="mt-3 space-y-2">
-                {matchingCatalog.items.map((item, idx) => (
-                  <li key={idx}>
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-semibold text-teal hover:underline"
-                    >
-                      {item.title} →
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <div className="mt-8">
-            <a
-              href="#contact"
-              className="inline-block rounded-lg bg-teal px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-tealDark"
-            >
-              Request Samples / Quote
-            </a>
-          </div>
-        </div>
+        <p className="mt-4 text-sm leading-7 text-stone-600 sm:text-base">
+          Explore our major leather application categories tailored for global supply.
+        </p>
       </div>
-    </div>
+
+      {/* CATEGORY GRID */}
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {(categories || []).map((category, index) => {
+          const categoryKey = category.id || category.slug || category.name || index;
+          const targetRoute = `/category/${category.id}`;
+
+          return (
+            <article
+              key={categoryKey}
+              className="group flex flex-col justify-between overflow-hidden rounded-[25px] border border-stone-200 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-card"
+            >
+              <div>
+                {/* CATEGORY IMAGE */}
+                <div className="relative h-[235px] overflow-hidden bg-warm">
+                  <img
+                    src={category.image || '/assets/placeholder-leather.jpg'}
+                    alt={category.name || 'Leather category'}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+
+                  {category.short && (
+                    <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/50 bg-white/90 px-4 py-3 shadow-soft backdrop-blur-md">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-teal">
+                        {category.short}
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* CATEGORY CONTENT */}
+                <div className="p-6">
+                  <h3 className="text-xl font-extrabold tracking-[-0.02em] text-ink">
+                    {category.name}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-6 text-stone-600">
+                    {category.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* ACTION BUTTON */}
+              <div className="px-6 pb-6 pt-0">
+                <Link
+                  to={targetRoute}
+                  className="inline-flex items-center gap-2 rounded-lg text-[10px] font-bold uppercase tracking-[0.15em] text-teal transition-colors duration-200 hover:text-tealDark focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2"
+                >
+                  View Details
+                  <ArrowUpRight size={14} aria-hidden="true" />
+                </Link>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
   );
 }
