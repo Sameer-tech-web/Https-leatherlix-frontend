@@ -2,6 +2,7 @@ import {
   ArrowRight,
   Award,
   Globe2,
+  Layers,
   ShieldCheck,
 } from 'lucide-react';
 
@@ -10,7 +11,11 @@ import {
   heroFacts,
 } from '../data/siteData';
 
+// Icons mapping to render corresponding Lucide icon above each fact
+const iconMap = [ShieldCheck, Globe2, Layers, Award];
+
 export default function Hero() {
+  const brandName = brand?.name || 'Leatherlix';
   const supplierLabel = brand?.supplierLabel || 'Authorized Leather Supplier';
   const factsList = heroFacts || [];
 
@@ -31,7 +36,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 max-w-xl text-sm leading-7 text-stone-600 sm:text-base">
-            Leatherlix provides a sourcing destination for premium leather
+            {brandName} provides a sourcing destination for premium leather
             applications across footwear, belts, fashion articles, lining,
             upholstery, printed leather, automotive and aviation.
           </p>
@@ -72,7 +77,7 @@ export default function Hero() {
                 className="shrink-0 text-teal"
                 aria-hidden="true"
               />
-              KTM published credentials
+              Verified credentials
             </span>
 
             <span className="inline-flex items-center gap-2">
@@ -98,14 +103,14 @@ export default function Hero() {
               src="/assets/belt-hero.jpg"
               alt="Premium belting leather raw product display"
               loading="eager"
-              fetchpriority="high"
+              fetchPriority="high"
               className="h-full w-full object-cover object-center"
             />
           </div>
 
           <div className="absolute bottom-5 left-5 max-w-xs rounded-2xl border border-white/60 bg-white/90 p-4 shadow-soft backdrop-blur-md">
             <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-teal">
-              KTM belting leather
+              {brandName} Belting Leather
             </p>
 
             <p className="mt-1 text-sm font-bold leading-5 text-ink">
@@ -115,22 +120,37 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Quick Facts */}
+      {/* Quick Facts Grid with Dynamic Lucide Icons */}
       <div className="mt-12 grid grid-cols-2 divide-x divide-y divide-stone-200 border-y border-stone-200 bg-white/45 sm:grid-cols-4 sm:divide-y-0">
-        {factsList.map((fact) => (
-          <div
-            key={fact.label}
-            className="px-4 py-6 text-center sm:px-5"
-          >
-            <p className="text-2xl font-extrabold tracking-[-0.04em] text-teal sm:text-3xl">
-              {fact.value}
-            </p>
+        {factsList.map((fact, index) => {
+          const IconComponent = iconMap[index % iconMap.length];
 
-            <p className="mx-auto mt-1 max-w-[170px] text-[9px] font-bold uppercase leading-4 tracking-[0.12em] text-stone-500">
-              {fact.label}
-            </p>
-          </div>
-        ))}
+          return (
+            <div
+              key={fact.label || index}
+              className="flex flex-col items-center justify-center px-4 py-6 text-center sm:px-5"
+            >
+              {/* Top Icon Box */}
+              <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl bg-teal/10 text-teal">
+                <IconComponent
+                  size={18}
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+              </div>
+
+              {/* Main Fact Value */}
+              <p className="text-2xl font-extrabold tracking-[-0.04em] text-teal sm:text-3xl">
+                {fact.value}
+              </p>
+
+              {/* Fact Label */}
+              <p className="mx-auto mt-1 max-w-[170px] text-[9px] font-bold uppercase leading-4 tracking-[0.12em] text-stone-500">
+                {fact.label}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
