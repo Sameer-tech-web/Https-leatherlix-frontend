@@ -11,12 +11,12 @@ import {
   heroFacts,
 } from '../data/siteData';
 
-// Icons mapping to render corresponding Lucide icon above each fact
+// Stats grid ke uper render hone wale Lucide Icons
 const iconMap = [ShieldCheck, Globe2, Layers, Award];
 
 export default function Hero() {
   const brandName = brand?.name || 'Leatherlix';
-  const supplierLabel = brand?.supplierLabel || 'Authorized Leather Supplier';
+  const supplierLabel = brand?.supplierLabel || 'PREMIUM LEATHER SUPPLIER';
   const factsList = heroFacts || [];
 
   return (
@@ -120,7 +120,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Quick Facts Grid with Dynamic Lucide Icons */}
+      {/* Quick Facts Grid */}
       <div className="mt-12 grid grid-cols-2 divide-x divide-y divide-stone-200 border-y border-stone-200 bg-white/45 sm:grid-cols-4 sm:divide-y-0">
         {factsList.map((fact, index) => {
           const IconComponent = iconMap[index % iconMap.length];
@@ -130,7 +130,6 @@ export default function Hero() {
               key={fact.label || index}
               className="flex flex-col items-center justify-center px-4 py-6 text-center sm:px-5"
             >
-              {/* Top Icon Box */}
               <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl bg-teal/10 text-teal">
                 <IconComponent
                   size={18}
@@ -139,12 +138,10 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Main Fact Value */}
               <p className="text-2xl font-extrabold tracking-[-0.04em] text-teal sm:text-3xl">
                 {fact.value}
               </p>
 
-              {/* Fact Label */}
               <p className="mx-auto mt-1 max-w-[170px] text-[9px] font-bold uppercase leading-4 tracking-[0.12em] text-stone-500">
                 {fact.label}
               </p>
