@@ -10,6 +10,104 @@ import {
   heroFacts,
 } from '../data/siteData';
 
+// Inline LWG Gold Certification Badge (Zero external file dependency)
+function LwgGoldBadge() {
+  return (
+    <svg
+      viewBox="0 0 170 100"
+      className="h-16 w-auto sm:h-20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="LWG Gold Rated Certification Badge"
+    >
+      <defs>
+        <linearGradient id="lwgGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#82C91E" />
+          <stop offset="100%" stopColor="#4D7C0F" />
+        </linearGradient>
+        <linearGradient id="lwgGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#D4AF37" />
+          <stop offset="50%" stopColor="#B8860B" />
+          <stop offset="100%" stopColor="#8B6508" />
+        </linearGradient>
+      </defs>
+
+      {/* Leaf Emblem */}
+      <g transform="translate(5, 5)">
+        <path
+          d="M32 75 C30 70 24 62 20 59 C16 56 9 55 6 48 C3 41 7 36 7 29 C7 22 2 18 5 10 C8 2 17 1 22 0 C20 6 18 12 21 16 C24 20 29 18 32 24 C35 30 29 35 31 42 C32 49 39 50 38 57 C36 64 31 69 32 75 Z"
+          fill="url(#lwgGreen)"
+        />
+        <path
+          d="M32 75 L42 86 M21 16 C17 21 13 26 8 29 M31 42 C24 45 19 47 6 48 M32 57 C25 60 21 64 20 59"
+          stroke="#3F6212"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </g>
+
+      {/* Text Group */}
+      <g transform="translate(52, 0)">
+        <text
+          x="0"
+          y="28"
+          fill="url(#lwgGold)"
+          fontSize="22"
+          fontWeight="900"
+          fontFamily="system-ui, -apple-system, sans-serif"
+          letterSpacing="0.5"
+        >
+          GOLD
+        </text>
+        <text
+          x="0"
+          y="50"
+          fill="url(#lwgGold)"
+          fontSize="22"
+          fontWeight="900"
+          fontFamily="system-ui, -apple-system, sans-serif"
+          letterSpacing="0.5"
+        >
+          RATED
+        </text>
+        <text
+          x="1"
+          y="67"
+          fill="#334155"
+          fontSize="7.5"
+          fontWeight="800"
+          fontFamily="system-ui, -apple-system, sans-serif"
+          letterSpacing="0.4"
+        >
+          AUDITED
+        </text>
+        <text
+          x="1"
+          y="77"
+          fill="#334155"
+          fontSize="7.5"
+          fontWeight="800"
+          fontFamily="system-ui, -apple-system, sans-serif"
+          letterSpacing="0.4"
+        >
+          AGAINST LWG
+        </text>
+        <text
+          x="1"
+          y="87"
+          fill="#334155"
+          fontSize="7.5"
+          fontWeight="800"
+          fontFamily="system-ui, -apple-system, sans-serif"
+          letterSpacing="0.4"
+        >
+          STANDARDS
+        </text>
+      </g>
+    </svg>
+  );
+}
+
 export default function Hero() {
   const brandName = brand?.name || 'Leatherlix';
   const supplierLabel = brand?.supplierLabel || 'PREMIUM LEATHER SUPPLIER';
@@ -129,21 +227,17 @@ export default function Hero() {
               className="group relative flex flex-col items-center justify-center p-6 text-center transition-all duration-300 hover:bg-white/90 sm:p-8"
             >
               {isGoldRating ? (
-                /* LWG Gold Certification Badge Block */
+                /* Pure Inline SVG LWG Gold Badge */
                 <div className="flex flex-col items-center justify-center">
                   <div className="mb-1 transition-transform duration-300 group-hover:scale-105">
-                    <img
-                      src="/assets/lwg-gold.svg.jpg"
-                      alt="LWG Gold Rated Certification Badge"
-                      className="h-16 w-auto object-contain drop-shadow-sm sm:h-20"
-                    />
+                    <LwgGoldBadge />
                   </div>
                   <p className="mt-1 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
                     {fact.label}
                   </p>
                 </div>
               ) : (
-                /* Clean Stat Number Block */
+                /* Clean Stat Numbers */
                 <div className="flex flex-col items-center justify-center">
                   <span className="text-3xl font-black tracking-tight text-teal transition-transform duration-300 group-hover:scale-105 sm:text-4xl">
                     {fact.value}
