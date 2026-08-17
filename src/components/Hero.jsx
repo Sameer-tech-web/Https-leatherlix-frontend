@@ -2,7 +2,6 @@ import {
   ArrowRight,
   Award,
   Globe2,
-  Layers,
   ShieldCheck,
 } from 'lucide-react';
 
@@ -11,63 +10,50 @@ import {
   heroFacts,
 } from '../data/siteData';
 
-// Premium LWG Gold Certification Badge
-function LwgGoldEmblem() {
+// LWG Gold Badge Component
+function LwgBadge() {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <svg
-        viewBox="0 0 160 90"
-        className="h-14 w-auto sm:h-16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-label="LWG Gold Rated Certification Badge"
+    <svg
+      viewBox="0 0 100 60"
+      className="h-10 w-auto mb-1"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M20 45 C15 30 10 20 5 15 C15 15 25 25 25 45 Z"
+        fill="#65A30D"
+      />
+      <text
+        x="32"
+        y="22"
+        fill="#D97706"
+        fontSize="16"
+        fontWeight="900"
+        fontFamily="sans-serif"
       >
-        <defs>
-          <linearGradient id="lwgGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#82C91E" />
-            <stop offset="100%" stopColor="#4D7C0F" />
-          </linearGradient>
-          <linearGradient id="lwgGold" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#D4AF37" />
-            <stop offset="50%" stopColor="#B8860B" />
-            <stop offset="100%" stopColor="#8B6508" />
-          </linearGradient>
-        </defs>
-
-        {/* Leaf Emblem */}
-        <g transform="translate(4, 2)">
-          <path
-            d="M32 75 C30 70 24 62 20 59 C16 56 9 55 6 48 C3 41 7 36 7 29 C7 22 2 18 5 10 C8 2 17 1 22 0 C20 6 18 12 21 16 C24 20 29 18 32 24 C35 30 29 35 31 42 C32 49 39 50 38 57 C36 64 31 69 32 75 Z"
-            fill="url(#lwgGreen)"
-          />
-          <path
-            d="M32 75 L42 86 M21 16 C17 21 13 26 8 29 M31 42 C24 45 19 47 6 48 M32 57 C25 60 21 64 20 59"
-            stroke="#3F6212"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-        </g>
-
-        {/* Badge Text */}
-        <g transform="translate(50, 0)">
-          <text x="0" y="26" fill="url(#lwgGold)" fontSize="20" fontWeight="900" fontFamily="sans-serif" letterSpacing="0.5">
-            GOLD
-          </text>
-          <text x="0" y="46" fill="url(#lwgGold)" fontSize="20" fontWeight="900" fontFamily="sans-serif" letterSpacing="0.5">
-            RATED
-          </text>
-          <text x="1" y="62" fill="#334155" fontSize="7" fontWeight="800" fontFamily="sans-serif" letterSpacing="0.3">
-            AUDITED
-          </text>
-          <text x="1" y="71" fill="#334155" fontSize="7" fontWeight="800" fontFamily="sans-serif" letterSpacing="0.3">
-            AGAINST LWG
-          </text>
-          <text x="1" y="80" fill="#334155" fontSize="7" fontWeight="800" fontFamily="sans-serif" letterSpacing="0.3">
-            STANDARDS
-          </text>
-        </g>
-      </svg>
-    </div>
+        GOLD
+      </text>
+      <text
+        x="32"
+        y="36"
+        fill="#D97706"
+        fontSize="12"
+        fontWeight="800"
+        fontFamily="sans-serif"
+      >
+        RATED
+      </text>
+      <text
+        x="32"
+        y="48"
+        fill="#475569"
+        fontSize="6"
+        fontWeight="700"
+        fontFamily="sans-serif"
+      >
+        LWG AUDITED
+      </text>
+    </svg>
   );
 }
 
@@ -76,24 +62,10 @@ export default function Hero() {
   const supplierLabel = brand?.supplierLabel || 'PREMIUM LEATHER SUPPLIER';
   const factsList = heroFacts || [];
 
-  // Helper to render proper icon based on index or text
-  const getIconForIndex = (index) => {
-    switch (index) {
-      case 0:
-        return <ShieldCheck size={18} className="text-teal" />;
-      case 1:
-        return <Globe2 size={18} className="text-teal" />;
-      case 2:
-        return <Layers size={18} className="text-teal" />;
-      default:
-        return <Award size={18} className="text-teal" />;
-    }
-  };
-
   return (
     <section id="top" className="container-shell pt-9 sm:pt-14">
       <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.92fr]">
-        {/* Left Hero Content */}
+        {/* Left Content */}
         <div className="reveal">
           <span className="inline-flex max-w-full rounded-full border border-teal/20 bg-teal/5 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.17em] text-teal">
             {supplierLabel}
@@ -112,7 +84,7 @@ export default function Hero() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="#collections"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal px-6 py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] text-white shadow-soft transition-all duration-300 hover:bg-tealDark hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-teal px-6 py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] text-white shadow-soft transition-all duration-300 hover:bg-tealDark hover:shadow-lg focus:outline-none"
             >
               Explore All Collections
               <ArrowRight size={16} aria-hidden="true" />
@@ -120,7 +92,7 @@ export default function Hero() {
 
             <a
               href="#contact"
-              className="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-6 py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] text-stone-800 transition-all duration-300 hover:border-teal hover:text-teal focus:outline-none focus:ring-2 focus:ring-teal"
+              className="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-6 py-3.5 text-[11px] font-bold uppercase tracking-[0.15em] text-stone-800 transition-all duration-300 hover:border-teal hover:text-teal"
             >
               Request Swatches
             </a>
@@ -144,7 +116,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Hero Image Section */}
+        {/* Hero Image */}
         <div className="relative">
           <div className="absolute -inset-5 rounded-[34px] bg-teal/5 blur-3xl" aria-hidden="true" />
 
@@ -169,44 +141,29 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Robust Metrics Bar */}
+      {/* Stats Cards Section */}
       <div className="mt-12 grid grid-cols-2 divide-x divide-y divide-stone-200/80 rounded-2xl border border-stone-200/80 bg-white shadow-sm sm:grid-cols-4 sm:divide-y-0">
         {factsList.map((fact, index) => {
-          const valueText = String(fact.value || '').toLowerCase();
-          const labelText = String(fact.label || '').toLowerCase();
-          
-          // Check if this card represents the LWG Gold certification (index 3 or contains 'gold'/'lwg')
-          const isGold = index === 3 || valueText.includes('gold') || labelText.includes('lwg');
+          const isGold = index === 3 || String(fact.value).toLowerCase().includes('gold');
 
           return (
             <div
               key={fact.label || index}
-              className="group relative flex flex-col items-center justify-center p-6 text-center transition-all duration-300 hover:bg-stone-50/50 sm:p-8"
+              className="flex flex-col items-center justify-center p-6 text-center sm:p-8"
             >
-              {isGold ? (
-                /* Gold Rating Badge Box */
-                <div className="flex flex-col items-center justify-center">
-                  <div className="mb-2 transition-transform duration-300 group-hover:scale-105">
-                    <LwgGoldEmblem />
-                  </div>
-                  <p className="mt-1 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
-                    {fact.label}
-                  </p>
-                </div>
-              ) : (
-                /* Standard Metrics Box with Clean Top Icons */
-                <div className="flex flex-col items-center justify-center">
-                  <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-teal/10 transition-transform duration-300 group-hover:scale-110">
-                    {getIconForIndex(index)}
-                  </div>
-                  <span className="text-3xl font-black tracking-tight text-teal sm:text-4xl">
-                    {fact.value}
-                  </span>
-                  <p className="mt-2 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
-                    {fact.label}
-                  </p>
-                </div>
-              )}
+              {isGold && <LwgBadge />}
+
+              <span
+                className={`text-3xl font-black tracking-tight sm:text-4xl ${
+                  isGold ? 'text-amber-600' : 'text-teal'
+                }`}
+              >
+                {fact.value}
+              </span>
+
+              <p className="mt-2 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
+                {fact.label}
+              </p>
             </div>
           );
         })}
