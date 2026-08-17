@@ -1,12 +1,12 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 
-import { categories, catalogLinks } from '../data/siteData';
+import { categories, catalogLinks, applications } from '../data/siteData';
 
 export default function CategoryDetail() {
   const { id } = useParams();
 
-  // Flexible lookup: ID, Slug ya lowercase Name match check
+  // Find category from siteData
   const category = categories.find(
     (item) =>
       item.id?.toLowerCase() === id?.toLowerCase() ||
@@ -34,14 +34,19 @@ export default function CategoryDetail() {
     );
   }
 
-  // Related Catalogs Matching Logic
+  // Related Catalogs
   const matchingCatalog = catalogLinks?.find((cat) =>
     cat.group?.toLowerCase().includes(category.name?.toLowerCase().split(' ')[0])
   );
 
+  // Related Applications
+  const categoryApplications = applications?.filter(
+    (app) => app.category === category.id
+  );
+
   return (
     <div className="container-shell py-12 sm:py-20">
-      {/* Back Button */}
+      {/* Navigation Link */}
       <Link
         to="/"
         className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-teal transition-colors hover:text-tealDark"
@@ -50,17 +55,18 @@ export default function CategoryDetail() {
         Back to Collections
       </Link>
 
+      {/* Main Grid */}
       <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:items-start">
-        {/* Category Image */}
+        {/* Left Side: Category Image */}
         <div className="overflow-hidden rounded-[25px] border border-stone-200 bg-warm shadow-soft">
           <img
             src={category.image || '/assets/placeholder-leather.jpg'}
             alt={category.name}
-            className="h-[350px] w-full object-cover sm:h-[450px]"
+            className="h-[380px] w-full object-cover sm:h-[480px]"
           />
         </div>
 
-        {/* Category Info */}
+        {/* Right Side: Primary Info */}
         <div>
           {category.short && (
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-coral">
@@ -76,11 +82,11 @@ export default function CategoryDetail() {
             {category.description}
           </p>
 
-          {/* Catalogues Section */}
+          {/* Related Catalogs */}
           {matchingCatalog && matchingCatalog.items?.length > 0 && (
             <div className="mt-8 rounded-2xl border border-stone-200 bg-white p-6 shadow-soft">
               <h3 className="text-sm font-bold uppercase tracking-wider text-ink">
-                Available Catalogues ({matchingCatalog.group})
+                Related Catalogues ({matchingCatalog.group})
               </h3>
               <div className="mt-4 space-y-3">
                 {matchingCatalog.items.map((item, idx) => (
@@ -99,7 +105,7 @@ export default function CategoryDetail() {
             </div>
           )}
 
-          {/* Action Button */}
+          {/* CTA Button */}
           <div className="mt-8">
             <a
               href="/#contact"
@@ -110,6 +116,31 @@ export default function CategoryDetail() {
           </div>
         </div>
       </div>
+
+      {/* Extended Applications Section */}
+      {categoryApplications && categoryApplications.length > 0 && (
+        <div className="mt-16 border-t border-stone-200 pt-12">
+          <h2 className="text-xl font-extrabold text-ink sm:text-2xl">
+            Key Applications & Specifications
+          </h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {categoryApplications.map((app) => (
+              <div
+                key={app.id}
+                className="rounded-2xl border border-stone-200 bg-white p-5 shadow-soft"
+              >
+                <div className="flex items-center gap-2 text-teal">
+                  <CheckCircle2 size={18} />
+                  <h3 className="font-bold text-ink">{app.title}</h3>
+                </div>
+                <p className="mt-2 text-xs leading-5 text-stone-600">
+                  {app.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
