@@ -48,7 +48,7 @@ export const navLinks = [
 ];
 
 /* =========================================================
-   COMPLETE PRODUCT CATEGORIES (ENRICHED DATA)
+   COMPLETE PRODUCT CATEGORIES
 ========================================================= */
 
 export const categories = [
@@ -259,19 +259,19 @@ export const categories = [
 
 export const heroFacts = [
   {
-    label: 'Leatherlix operational standard',
+    label: `${brand.name} Operational Standard`,
     value: 'Premium',
   },
   {
-    label: 'countries / global reach',
+    label: 'Countries / Global Reach',
     value: '54+',
   },
   {
-    label: 'average belt leather thickness',
+    label: 'Average Belt Leather Thickness',
     value: '3.5–4.0 mm',
   },
   {
-    label: 'LWG environmental rating',
+    label: 'LWG Environmental Rating',
     value: 'Gold',
   },
 ];
