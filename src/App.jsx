@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import Collections from './pages/Collections';
+import CategoryDetail from './pages/CategoryDetail';
 
 // Route change hone par page ko top par scroll karne ke liye
 function ScrollToTop() {
@@ -37,6 +38,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/collections" element={<Collections />} />
+            <Route path="/category/:id" element={<CategoryDetail />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
