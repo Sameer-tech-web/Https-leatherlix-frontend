@@ -6,7 +6,7 @@ import {
   Zap,
 } from 'lucide-react';
 
-import { sustainability } from '../data/siteData';
+import { brand, sustainability } from '../data/siteData';
 
 const sustainabilityIcons = [
   Droplets,
@@ -48,7 +48,7 @@ export default function SustainabilitySection() {
 
             {/* Description */}
             <p className="mt-5 max-w-xl text-sm leading-7 text-stone-300 sm:text-base">
-              KTM Leather describes sustainability through water reuse,
+              {brand?.name || 'Leatherlix'} describes sustainability through water reuse,
               cleaner chemistry, process control, traceability, energy
               efficiency and continued development of lower-impact leather
               production.
@@ -70,8 +70,8 @@ export default function SustainabilitySection() {
 
                   <p className="mt-1 text-xs leading-5 text-stone-300 sm:text-sm">
                     Sustainability claims on this page are presented as
-                    manufacturer-published information and should remain
-                    attributed to KTM Leather in commercial communications.
+                    supplier-published information and should remain
+                    attributed to {brand?.name || 'Leatherlix'} in commercial communications.
                   </p>
                 </div>
               </div>
