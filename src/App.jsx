@@ -8,7 +8,6 @@ import Home from './pages/Home';
 import Collections from './pages/Collections';
 import CategoryDetail from './pages/CategoryDetail';
 
-// Route change hone par page ko top par scroll karne ke liye
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -24,7 +23,6 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <div className="flex min-h-screen flex-col bg-cream text-ink antialiased">
-        {/* Accessibility Skip Link */}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-teal focus:p-4 focus:text-white"
