@@ -1,6 +1,5 @@
 import {
   ArrowUpRight,
-  ExternalLink,
   Mail,
   MapPin,
   Phone,
@@ -35,9 +34,11 @@ export default function Footer() {
               automotive and aviation applications.
             </p>
 
-            <div className="mt-5 inline-flex rounded-full border border-teal/15 bg-teal/5 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-teal">
-              {brand?.supplierLabel}
-            </div>
+            {brand?.supplierLabel && (
+              <div className="mt-5 inline-flex rounded-full border border-teal/15 bg-teal/5 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-teal">
+                {brand?.supplierLabel}
+              </div>
+            )}
           </div>
 
           {/* Navigation Column */}
@@ -97,32 +98,18 @@ export default function Footer() {
                 </a>
               )}
 
-              <div className="flex items-start gap-3 text-sm text-stone-700">
-                <MapPin
-                  size={17}
-                  className="mt-0.5 shrink-0 text-teal"
-                  aria-hidden="true"
-                />
-
-                <div>
-                  <p className="font-semibold">{brand?.manufacturer}</p>
-
-                  {brand?.manufacturerUrl && (
-                    <a
-                      href={brand.manufacturerUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-teal hover:text-tealDark focus:outline-none focus-visible:ring-1 focus-visible:ring-teal"
-                    >
-                      Visit KTM Leather
-                      <ExternalLink
-                        size={12}
-                        aria-hidden="true"
-                      />
-                    </a>
-                  )}
+              {brand?.manufacturer && (
+                <div className="flex items-start gap-3 text-sm text-stone-700">
+                  <MapPin
+                    size={17}
+                    className="mt-0.5 shrink-0 text-teal"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <p className="font-semibold">{brand?.manufacturer}</p>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
