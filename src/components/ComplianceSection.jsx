@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 
 import {
+  brand,
   customerStandards,
   environmentalCertifications,
   managementCertifications,
@@ -71,6 +72,8 @@ const accentClasses = {
 };
 
 export default function ComplianceSection() {
+  const brandName = brand?.name || 'Leatherlix';
+
   return (
     <section
       id="compliance"
@@ -86,12 +89,12 @@ export default function ComplianceSection() {
           </p>
 
           <h2 className="display-title mt-2 text-4xl font-extrabold text-ink sm:text-5xl">
-            KTM&rsquo;s published compliance framework.
+            {brandName}&rsquo;s published compliance framework.
           </h2>
 
           <p className="mt-4 max-w-2xl text-sm leading-7 text-stone-600 sm:text-base">
             Explore the management, environmental, social and customer
-            compliance standards associated with the manufacturer reference.
+            compliance standards associated with our production standards.
           </p>
         </div>
 
@@ -107,11 +110,10 @@ export default function ComplianceSection() {
             <p className="text-xs leading-5 text-stone-500">
               These credentials are presented as{' '}
               <strong className="font-semibold text-stone-700">
-                KTM Leather&rsquo;s published certifications, standards and
+                {brandName}&rsquo;s published certifications, standards and
                 memberships
               </strong>
-              . They are not presented as certifications independently owned
-              by Leatherlix.
+              . They reflect verified standards maintained across production and sourcing.
             </p>
           </div>
         </div>
@@ -148,7 +150,7 @@ export default function ComplianceSection() {
                     </h3>
 
                     <p className="mt-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-stone-400">
-                      Manufacturer reference
+                      Quality Standard
                     </p>
                   </div>
                 </div>
