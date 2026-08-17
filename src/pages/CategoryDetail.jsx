@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 
-import { categories, catalogLinks, applications } from '../data/siteData';
+import { categories, applications } from '../data/siteData';
 
 export default function CategoryDetail() {
   const { id } = useParams();
@@ -33,11 +33,6 @@ export default function CategoryDetail() {
       </div>
     );
   }
-
-  // Related Catalogs
-  const matchingCatalog = catalogLinks?.find((cat) =>
-    cat.group?.toLowerCase().includes(category.name?.toLowerCase().split(' ')[0])
-  );
 
   // Related Applications
   const categoryApplications = applications?.filter(
@@ -81,29 +76,6 @@ export default function CategoryDetail() {
           <p className="mt-4 leading-7 text-stone-600 sm:text-base">
             {category.description}
           </p>
-
-          {/* Related Catalogs */}
-          {matchingCatalog && matchingCatalog.items?.length > 0 && (
-            <div className="mt-8 rounded-2xl border border-stone-200 bg-white p-6 shadow-soft">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-ink">
-                Related Catalogues ({matchingCatalog.group})
-              </h3>
-              <div className="mt-4 space-y-3">
-                {matchingCatalog.items.map((item, idx) => (
-                  <a
-                    key={idx}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between rounded-xl bg-warm p-3.5 text-xs font-bold text-teal transition-colors hover:bg-teal/10"
-                  >
-                    <span>{item.title}</span>
-                    <ArrowUpRight size={14} />
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* CTA Button */}
           <div className="mt-8">
