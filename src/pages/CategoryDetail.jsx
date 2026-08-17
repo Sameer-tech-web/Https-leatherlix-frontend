@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ShieldCheck, Layers, Wrench } from 'lucide-react';
 
 import { categories, applications } from '../data/siteData';
 
@@ -34,7 +34,7 @@ export default function CategoryDetail() {
     );
   }
 
-  // Related Applications
+  // Related Applications from global list
   const categoryApplications = applications?.filter(
     (app) => app.category === category.id
   );
@@ -61,7 +61,7 @@ export default function CategoryDetail() {
           />
         </div>
 
-        {/* Right Side: Primary Info */}
+        {/* Right Side: Primary Info & Technical Specifications */}
         <div>
           {category.short && (
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-coral">
@@ -77,6 +77,23 @@ export default function CategoryDetail() {
             {category.description}
           </p>
 
+          {/* Technical Specifications Table */}
+          {category.specifications && category.specifications.length > 0 && (
+            <div className="mt-6 rounded-2xl border border-stone-200 bg-white p-6 shadow-soft">
+              <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ink">
+                <Layers size={16} className="text-teal" /> Technical Specifications
+              </h3>
+              <dl className="mt-4 divide-y divide-stone-100 text-xs">
+                {category.specifications.map((spec, idx) => (
+                  <div key={idx} className="flex justify-between py-2.5">
+                    <dt className="font-semibold text-stone-500">{spec.label}</dt>
+                    <dd className="font-bold text-ink">{spec.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+
           {/* CTA Button */}
           <div className="mt-8">
             <a
@@ -89,11 +106,50 @@ export default function CategoryDetail() {
         </div>
       </div>
 
-      {/* Extended Applications Section */}
+      {/* Characteristics & Recommended End Uses */}
+      <div className="mt-16 grid gap-8 border-t border-stone-200 pt-12 md:grid-cols-2">
+        {/* Key Features */}
+        {category.features && category.features.length > 0 && (
+          <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-soft">
+            <h2 className="flex items-center gap-2 text-lg font-extrabold text-ink">
+              <ShieldCheck className="text-teal" size={20} /> Key Characteristics
+            </h2>
+            <ul className="mt-4 space-y-3">
+              {category.features.map((feature, idx) => (
+                <li key={idx} className="flex items-start gap-3 text-xs leading-5 text-stone-600">
+                  <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-teal" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Recommended End Uses */}
+        {category.applicationsList && category.applicationsList.length > 0 && (
+          <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-soft">
+            <h2 className="flex items-center gap-2 text-lg font-extrabold text-ink">
+              <Wrench className="text-teal" size={20} /> Recommended End Uses
+            </h2>
+            <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              {category.applicationsList.map((app, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-xl bg-warm px-3.5 py-2.5 text-xs font-bold text-ink"
+                >
+                  {app}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Extended Applications Section (From Global Data) */}
       {categoryApplications && categoryApplications.length > 0 && (
-        <div className="mt-16 border-t border-stone-200 pt-12">
+        <div className="mt-12 border-t border-stone-200 pt-12">
           <h2 className="text-xl font-extrabold text-ink sm:text-2xl">
-            Key Applications & Specifications
+            Related Applications & Use Cases
           </h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {categoryApplications.map((app) => (
