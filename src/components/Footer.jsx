@@ -25,7 +25,7 @@ export default function Footer() {
               href="#top"
               className="inline-block text-[30px] font-extrabold tracking-[-0.06em] text-teal focus:outline-none focus-visible:ring-2 focus-visible:ring-teal"
             >
-              {brand?.name}
+              {brand?.name || 'Leatherlix'}
             </a>
 
             <p className="mt-3 max-w-md text-sm leading-6 text-stone-600">
@@ -34,11 +34,9 @@ export default function Footer() {
               automotive and aviation applications.
             </p>
 
-            {brand?.supplierLabel && (
-              <div className="mt-5 inline-flex rounded-full border border-teal/15 bg-teal/5 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-teal">
-                {brand?.supplierLabel}
-              </div>
-            )}
+            <div className="mt-5 inline-flex rounded-full border border-teal/15 bg-teal/5 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-teal">
+              PREMIUM LEATHER SUPPLIER
+            </div>
           </div>
 
           {/* Navigation Column */}
@@ -53,11 +51,11 @@ export default function Footer() {
             >
               {navigationList.map((link) => (
                 <a
-                  key={link.href}
+                  key={link.href || link.label}
                   href={link.href}
                   className="w-fit text-sm font-semibold text-stone-700 transition-colors duration-200 hover:text-teal focus:outline-none focus-visible:text-teal"
                 >
-                  {link.name}
+                  {link.name || link.label}
                 </a>
               ))}
             </nav>
@@ -98,18 +96,16 @@ export default function Footer() {
                 </a>
               )}
 
-              {brand?.manufacturer && (
-                <div className="flex items-start gap-3 text-sm text-stone-700">
-                  <MapPin
-                    size={17}
-                    className="mt-0.5 shrink-0 text-teal"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <p className="font-semibold">{brand?.manufacturer}</p>
-                  </div>
+              <div className="flex items-start gap-3 text-sm text-stone-700">
+                <MapPin
+                  size={17}
+                  className="mt-0.5 shrink-0 text-teal"
+                  aria-hidden="true"
+                />
+                <div>
+                  <p className="font-semibold">Near Children Hospital, Multan, Pakistan</p>
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
@@ -139,7 +135,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-6 flex flex-col gap-2 border-t border-stone-200 pt-5 text-[10px] text-stone-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {currentYear} {brand?.name || 'LeatherLix'}. All rights reserved.
+            © {currentYear} {brand?.name || 'Leatherlix'}. All rights reserved.
           </p>
 
           <p>Premium Leather Supplier</p>
