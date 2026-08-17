@@ -4,9 +4,10 @@ import {
   FileText,
 } from 'lucide-react';
 
-import { catalogLinks } from '../data/siteData';
+import { brand, catalogLinks } from '../data/siteData';
 
 export default function CatalogSection() {
+  const brandName = brand?.name || 'Leatherlix';
   const catalogsList = catalogLinks || [];
 
   return (
@@ -27,18 +28,15 @@ export default function CatalogSection() {
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-stone-600 sm:text-base">
-              Browse the available KTM Leather catalogue groups and open the
-              relevant manufacturer page in a separate tab.
+              Browse the available {brandName} catalogue groups and view the relevant collection details.
             </p>
           </div>
 
           <a
-            href="https://ktmleather.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
             className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-xl bg-teal px-5 py-3 text-[10px] font-bold uppercase tracking-[0.15em] text-white shadow-soft transition-colors duration-200 hover:bg-tealDark focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 sm:self-auto"
           >
-            Open KTM Website
+            <span>Request Catalogue PDF</span>
             <ExternalLink
               size={15}
               aria-hidden="true"
@@ -83,9 +81,9 @@ export default function CatalogSection() {
                   <div className="mt-5 space-y-2.5">
                     {items.map((item) => (
                       <a
-                        key={item.url}
-                        href={item.url}
-                        target="_blank"
+                        key={item.url || item.title}
+                        href={item.url || '#contact'}
+                        target={item.url?.startsWith('http') ? '_blank' : '_self'}
                         rel="noopener noreferrer"
                         className="group/link flex items-center justify-between gap-3 rounded-xl border border-stone-200 bg-cream px-4 py-3 text-xs font-semibold text-stone-700 transition-all duration-200 hover:border-teal/25 hover:bg-white hover:text-teal focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-1"
                       >
@@ -105,8 +103,8 @@ export default function CatalogSection() {
                 {primaryItem && (
                   <div className="mt-5 border-t border-stone-200 pt-4">
                     <a
-                      href={primaryItem.url}
-                      target="_blank"
+                      href={primaryItem.url || '#contact'}
+                      target={primaryItem.url?.startsWith('http') ? '_blank' : '_self'}
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-teal transition-colors duration-200 hover:text-tealDark"
                     >
