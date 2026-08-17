@@ -2,6 +2,7 @@ import {
   ArrowRight,
   Award,
   Globe2,
+  Layers,
   ShieldCheck,
 } from 'lucide-react';
 
@@ -9,53 +10,6 @@ import {
   brand,
   heroFacts,
 } from '../data/siteData';
-
-// LWG Gold Badge Component
-function LwgBadge() {
-  return (
-    <svg
-      viewBox="0 0 100 60"
-      className="h-10 w-auto mb-1"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M20 45 C15 30 10 20 5 15 C15 15 25 25 25 45 Z"
-        fill="#65A30D"
-      />
-      <text
-        x="32"
-        y="22"
-        fill="#D97706"
-        fontSize="16"
-        fontWeight="900"
-        fontFamily="sans-serif"
-      >
-        GOLD
-      </text>
-      <text
-        x="32"
-        y="36"
-        fill="#D97706"
-        fontSize="12"
-        fontWeight="800"
-        fontFamily="sans-serif"
-      >
-        RATED
-      </text>
-      <text
-        x="32"
-        y="48"
-        fill="#475569"
-        fontSize="6"
-        fontWeight="700"
-        fontFamily="sans-serif"
-      >
-        LWG AUDITED
-      </text>
-    </svg>
-  );
-}
 
 export default function Hero() {
   const brandName = brand?.name || 'Leatherlix';
@@ -143,30 +97,59 @@ export default function Hero() {
 
       {/* Stats Cards Section */}
       <div className="mt-12 grid grid-cols-2 divide-x divide-y divide-stone-200/80 rounded-2xl border border-stone-200/80 bg-white shadow-sm sm:grid-cols-4 sm:divide-y-0">
-        {factsList.map((fact, index) => {
-          const isGold = index === 3 || String(fact.value).toLowerCase().includes('gold');
+        
+        {/* 1. Premium */}
+        <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
+          <Award className="mb-2 h-7 w-7 text-teal" />
+          <span className="text-3xl font-black tracking-tight text-teal sm:text-4xl">
+            {factsList[0]?.value || 'Premium'}
+          </span>
+          <p className="mt-2 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
+            {factsList[0]?.label || 'LEATHERLIX OPERATIONAL STANDARD'}
+          </p>
+        </div>
 
-          return (
-            <div
-              key={fact.label || index}
-              className="flex flex-col items-center justify-center p-6 text-center sm:p-8"
-            >
-              {isGold && <LwgBadge />}
+        {/* 2. 54+ */}
+        <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
+          <Globe2 className="mb-2 h-7 w-7 text-teal" />
+          <span className="text-3xl font-black tracking-tight text-teal sm:text-4xl">
+            {factsList[1]?.value || '54+'}
+          </span>
+          <p className="mt-2 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
+            {factsList[1]?.label || 'COUNTRIES / GLOBAL REACH'}
+          </p>
+        </div>
 
-              <span
-                className={`text-3xl font-black tracking-tight sm:text-4xl ${
-                  isGold ? 'text-amber-600' : 'text-teal'
-                }`}
-              >
-                {fact.value}
-              </span>
+        {/* 3. 3.5–4.0 mm */}
+        <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
+          <Layers className="mb-2 h-7 w-7 text-teal" />
+          <span className="text-3xl font-black tracking-tight text-teal sm:text-4xl">
+            {factsList[2]?.value || '3.5–4.0 mm'}
+          </span>
+          <p className="mt-2 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
+            {factsList[2]?.label || 'AVERAGE BELT LEATHER THICKNESS'}
+          </p>
+        </div>
 
-              <p className="mt-2 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
-                {fact.label}
-              </p>
-            </div>
-          );
-        })}
+        {/* 4. Gold (Image Location) */}
+        <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
+          <img
+            src="/assets/lwg-gold.jpg"
+            alt="Gold LWG Rating"
+            className="mb-2 h-10 w-auto object-contain"
+            onError={(e) => {
+              // Agar image na mile to fallback text
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+          <span className="text-3xl font-black tracking-tight text-amber-600 sm:text-4xl">
+            {factsList[3]?.value || 'Gold'}
+          </span>
+          <p className="mt-2 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
+            {factsList[3]?.label || 'LWG ENVIRONMENTAL RATING'}
+          </p>
+        </div>
+
       </div>
     </section>
   );
