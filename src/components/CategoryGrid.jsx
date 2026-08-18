@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 
 import { categories } from '../data/siteData';
 
-// Map Category ID or Name to specific Lucide Icons
+// Map Category ID/Slug to Lucide Icons
 const iconMap = {
   footwear: Footprints,
   bags: Briefcase,
@@ -46,11 +46,13 @@ export default function CategoryGrid() {
       {/* CATEGORY GRID */}
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {(categories || []).map((category, index) => {
+          const categoryId = category.id || category.slug || index;
           const categoryKey = category.id || category.slug || category.name || index;
-          const targetRoute = `/category/${category.id}`;
+          const targetRoute = `/category/${categoryId}`;
 
-          // Match icon dynamically by ID or fallback to ShieldCheck
-          const IconComponent = iconMap[category.id] || ShieldCheck;
+          // Case-insensitive icon lookup
+          const lookupKey = String(categoryId).toLowerCase();
+          const IconComponent = iconMap[lookupKey] || ShieldCheck;
 
           return (
             <article
