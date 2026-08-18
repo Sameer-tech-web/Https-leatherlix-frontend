@@ -143,6 +143,12 @@ const applicationsData = [
 export default function ApplicationsSection() {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  const handleCardClick = (e, item) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setSelectedProduct(item);
+  };
+
   return (
     <section id="applications" className="container-shell py-12 sm:py-16">
       {/* Cards Grid */}
@@ -150,11 +156,11 @@ export default function ApplicationsSection() {
         {applicationsData.map((item) => (
           <div
             key={item.id}
-            onClick={() => setSelectedProduct(item)}
+            onClick={(e) => handleCardClick(e, item)}
             className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-6 shadow-sm transition-all duration-300 hover:border-teal/30 hover:shadow-md cursor-pointer"
           >
             <div>
-              {/* Icon ki jagah direct Image */}
+              {/* Product Image */}
               <div className="mb-4 h-14 w-14 overflow-hidden rounded-xl bg-stone-100">
                 <img
                   src={item.image}
@@ -183,19 +189,20 @@ export default function ApplicationsSection() {
         ))}
       </div>
 
-      {/* Product Detail Info Card / Modal */}
+      {/* OVERLAY POPUP MODAL (Page Change Nhi Hoga) */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-          <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white p-6 sm:p-8 shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
+          <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white p-6 sm:p-8 shadow-2xl animate-in fade-in zoom-in duration-200">
             {/* Close Button */}
             <button
+              type="button"
               onClick={() => setSelectedProduct(null)}
               className="absolute right-4 top-4 rounded-full bg-stone-100 p-2 text-stone-500 hover:bg-stone-200"
             >
               <X className="h-5 w-5" />
             </button>
 
-            {/* Header with Image */}
+            {/* Content */}
             <div className="flex flex-col sm:flex-row gap-6 items-start">
               <img
                 src={selectedProduct.image}
@@ -215,7 +222,7 @@ export default function ApplicationsSection() {
               </div>
             </div>
 
-            {/* Specifications Details Table */}
+            {/* Table Details */}
             <div className="mt-6 rounded-xl border border-stone-100 bg-stone-50/60 p-4">
               <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-3">
                 Material Specifications
@@ -249,9 +256,10 @@ export default function ApplicationsSection() {
               </div>
             </div>
 
-            {/* Action button */}
+            {/* Actions */}
             <div className="mt-6 flex justify-end gap-3">
               <button
+                type="button"
                 onClick={() => setSelectedProduct(null)}
                 className="rounded-xl border border-stone-200 px-5 py-2.5 text-xs font-semibold text-stone-600 hover:bg-stone-50"
               >
