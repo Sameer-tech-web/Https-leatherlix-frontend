@@ -61,12 +61,12 @@ export default function CategoryGrid() {
             >
               <div>
                 {/* CATEGORY IMAGE WITH FLOATING ICON */}
-                <div className="relative h-[235px] overflow-hidden bg-warm">
+                <div className="relative h-[235px] w-full overflow-hidden bg-warm">
                   <img
                     src={category.image || '/assets/placeholder-leather.jpg'}
                     alt={category.name || 'Leather category'}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
                   />
 
                   {/* Icon Badge top-left */}
