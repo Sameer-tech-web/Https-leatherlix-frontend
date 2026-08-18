@@ -1,5 +1,6 @@
 import Hero from '../components/Hero';
 import CategoryGrid from '../components/CategoryGrid';
+import Applications from '../components/Applications';
 import AboutSection from '../components/AboutSection';
 import ProductDetailSection from '../components/ProductDetailSection';
 import QualitySection from '../components/QualitySection';
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <CategoryGrid />
+      <Applications />
       <AboutSection />
       <ProductDetailSection />
       <QualitySection />
