@@ -74,7 +74,7 @@ export default function Hero() {
         <div className="relative">
           <div className="absolute -inset-5 rounded-[34px] bg-teal/5 blur-3xl" aria-hidden="true" />
 
-          <div className="relative h-[360px] overflow-hidden rounded-[30px] bg-warm shadow-card sm:h-[470px] lg:h-[530px]">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[30px] bg-warm shadow-card sm:aspect-[16/11] lg:aspect-[4/3]">
             <img
               src="/assets/belt-hero.jpg"
               alt="Premium belting leather raw product display"
@@ -139,11 +139,13 @@ export default function Hero() {
 
         {/* 4. Gold Image + Gold Text + Label */}
         <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
-          <img
-            src="/assets/lwg-gold.svg.jpg"
-            alt="LWG Gold Certificate"
-            className="mb-1 h-14 w-auto object-contain sm:h-16"
-          />
+          <div className="mb-2 flex h-12 items-center justify-center">
+            <img
+              src="/assets/lwg-gold.svg.jpg"
+              alt="LWG Gold Certificate"
+              className="h-full max-w-[120px] object-contain"
+            />
+          </div>
           <span className="text-3xl font-black tracking-tight text-amber-600 sm:text-4xl">
             {factsList[3]?.value || 'Gold'}
           </span>
