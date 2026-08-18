@@ -2,7 +2,7 @@ import {
   ArrowRight,
   Award,
   Globe2,
-  Layers,
+  Ruler,
   ShieldCheck,
 } from 'lucide-react';
 
@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Hero Image */}
+        {/* Hero Image Block */}
         <div className="relative">
           <div className="absolute -inset-5 rounded-[34px] bg-teal/5 blur-3xl" aria-hidden="true" />
 
@@ -95,12 +95,14 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Stats Cards Section */}
+      {/* Stats Section */}
       <div className="mt-12 grid grid-cols-2 divide-x divide-y divide-stone-200/80 rounded-2xl border border-stone-200/80 bg-white shadow-sm sm:grid-cols-4 sm:divide-y-0">
         
-        {/* 1. Premium */}
+        {/* 1. Premium Block */}
         <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
-          <Award className="mb-2 h-7 w-7 text-teal" />
+          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-teal/10">
+            <Award className="h-5 w-5 text-teal" />
+          </div>
           <span className="text-3xl font-black tracking-tight text-teal sm:text-4xl">
             {factsList[0]?.value || 'Premium'}
           </span>
@@ -109,9 +111,11 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* 2. 54+ */}
+        {/* 2. 54+ Block */}
         <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
-          <Globe2 className="mb-2 h-7 w-7 text-teal" />
+          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-teal/10">
+            <Globe2 className="h-5 w-5 text-teal" />
+          </div>
           <span className="text-3xl font-black tracking-tight text-teal sm:text-4xl">
             {factsList[1]?.value || '54+'}
           </span>
@@ -120,9 +124,11 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* 3. 3.5–4.0 mm */}
+        {/* 3. 3.5–4.0 mm Block */}
         <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
-          <Layers className="mb-2 h-7 w-7 text-teal" />
+          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-teal/10">
+            <Ruler className="h-5 w-5 text-teal" />
+          </div>
           <span className="text-3xl font-black tracking-tight text-teal sm:text-4xl">
             {factsList[2]?.value || '3.5–4.0 mm'}
           </span>
@@ -131,20 +137,13 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* 4. Gold (Image Location) */}
-        <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
+        {/* 4. Gold Certificate Image Block */}
+        <div className="flex flex-col items-center justify-center p-4 text-center sm:p-6">
           <img
-            src="/assets/lwg-gold.jpg"
-            alt="Gold LWG Rating"
-            className="mb-2 h-10 w-auto object-contain"
-            onError={(e) => {
-              // Agar image na mile to fallback text
-              e.currentTarget.style.display = 'none';
-            }}
+            src="/assets/lwg-gold.svg.jpg"
+            alt="LWG Gold Certificate"
+            className="h-20 w-auto object-contain sm:h-24"
           />
-          <span className="text-3xl font-black tracking-tight text-amber-600 sm:text-4xl">
-            {factsList[3]?.value || 'Gold'}
-          </span>
           <p className="mt-2 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
             {factsList[3]?.label || 'LWG ENVIRONMENTAL RATING'}
           </p>
