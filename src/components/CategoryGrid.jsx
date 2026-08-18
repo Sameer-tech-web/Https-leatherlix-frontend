@@ -1,14 +1,36 @@
-import { ArrowUpRight } from 'lucide-react';
+import {
+  Armchair,
+  ArrowUpRight,
+  Briefcase,
+  Car,
+  Footprints,
+  Layers,
+  Plane,
+  Printer,
+  ShieldCheck,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import { categories } from '../data/siteData';
+
+// Map Category ID or Name to specific Lucide Icons
+const iconMap = {
+  footwear: Footprints,
+  bags: Briefcase,
+  belts: ShieldCheck,
+  lining: Layers,
+  furniture: Armchair,
+  automotive: Car,
+  aviation: Plane,
+  printed: Printer,
+};
 
 export default function CategoryGrid() {
   return (
     <section id="collections" className="container-shell py-16 sm:py-24">
       {/* SECTION HEADER */}
       <div className="max-w-3xl">
-        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-coral">
+        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-teal">
           Complete Product Portfolio
         </p>
 
@@ -27,13 +49,16 @@ export default function CategoryGrid() {
           const categoryKey = category.id || category.slug || category.name || index;
           const targetRoute = `/category/${category.id}`;
 
+          // Match icon dynamically by ID or fallback to ShieldCheck
+          const IconComponent = iconMap[category.id] || ShieldCheck;
+
           return (
             <article
               key={categoryKey}
               className="group flex flex-col justify-between overflow-hidden rounded-[25px] border border-stone-200 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-card"
             >
               <div>
-                {/* CATEGORY IMAGE */}
+                {/* CATEGORY IMAGE WITH FLOATING ICON */}
                 <div className="relative h-[235px] overflow-hidden bg-warm">
                   <img
                     src={category.image || '/assets/placeholder-leather.jpg'}
@@ -41,6 +66,11 @@ export default function CategoryGrid() {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
+
+                  {/* Icon Badge top-left */}
+                  <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white/90 shadow-soft backdrop-blur-md">
+                    <IconComponent className="h-5 w-5 text-teal" />
+                  </div>
 
                   {category.short && (
                     <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/50 bg-white/90 px-4 py-3 shadow-soft backdrop-blur-md">
