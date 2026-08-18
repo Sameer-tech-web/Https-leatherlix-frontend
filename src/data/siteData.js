@@ -58,7 +58,8 @@ export const categories = [
     short: 'Cow & River Bison upper leathers',
     description:
       'Upper leathers for dress shoes, casual shoes, Nubuck footwear, boots, work boots, tactical boots and Western boots.',
-    image: '/assets/belt-hero.jpg',
+    // ✅ FIX: Belt image replaced with Footwear/Boots image
+    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&auto=format&fit=crop&q=80',
     page: '/category/american',
     specifications: [
       { label: 'Origin / Raw Material', value: 'Cow & River Bison Hides' },
@@ -120,7 +121,8 @@ export const categories = [
     short: 'River Bison whole-hide upholstery',
     description:
       'Whole-hide upholstery leather for furniture and decorative leather applications, including finished and dyed-crust options.',
-    image: '/assets/belt-card.jpg',
+    // ✅ FIX: Replaced belt image with real upholstery/furniture image
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&auto=format&fit=crop&q=80',
     page: '/category/upholstery',
     specifications: [
       { label: 'Origin / Raw Material', value: 'River Bison Whole-Hides' },
