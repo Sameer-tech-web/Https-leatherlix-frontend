@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CheckCircle2, X, Shield, Award, Sliders, ArrowRight } from 'lucide-react';
+import { CheckCircle2, X, ArrowRight, ShieldCheck } from 'lucide-react';
 
 const applicationsData = [
   {
@@ -9,16 +9,14 @@ const applicationsData = [
       'Dress shoes, casual shoes, work boots, tactical boots, Western boots and other footwear applications.',
     image:
       'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop&q=80',
-    specs: {
-      substance: '1.2 - 2.0 mm',
-      origin: 'Cow / Buffalo',
-      finish: 'Aniline / Semi-Aniline',
-      standards: 'LWG Certified, REACH Compliant',
-    },
+    substance: '1.2 - 2.0 mm',
+    rawOrigin: 'Cow / Buffalo Hides',
+    finishType: 'Aniline / Semi-Aniline',
+    compliance: 'LWG Certified, REACH Compliant',
     features: [
-      'High tensile and tear strength',
-      'Breathable and moisture absorbent',
-      'Excellent buffing and polishing qualities',
+      'High tensile and tear resistance for long-lasting shoes',
+      'Breathable leather structure for maximum foot comfort',
+      'Excellent buffing and burnishing properties',
     ],
   },
   {
@@ -28,16 +26,14 @@ const applicationsData = [
       'Wallets, handbags, backpacks, briefcases, portfolios and design-led leather accessories.',
     image:
       'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&auto=format&fit=crop&q=80',
-    specs: {
-      substance: '1.1 - 1.6 mm',
-      origin: 'Cow Calf / Buffalo',
-      finish: 'Nappa / Pull-Up / Embossed',
-      standards: 'LWG Silver / Gold Rated',
-    },
+    substance: '1.1 - 1.6 mm',
+    rawOrigin: 'Cow Calf / Buffalo',
+    finishType: 'Nappa / Pull-Up / Embossed',
+    compliance: 'LWG Silver / Gold Standard',
     features: [
-      'Supple and smooth temper',
-      'Ideal for edge-painting and precise stitching',
-      'Rich natural grain retention',
+      'Supple and soft touch ideal for luxury goods',
+      'Perfect edge-painting and fine stitching quality',
+      'Rich natural grain texture and aging patina',
     ],
   },
   {
@@ -47,16 +43,14 @@ const applicationsData = [
       'Heavy-duty River Bison belting leather in single butts, double butts and doze shapes.',
     image:
       'https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=800&auto=format&fit=crop&q=80',
-    specs: {
-      substance: '3.2 - 4.0 mm',
-      origin: 'Buffalo / Heavy Cow Single Butts',
-      finish: 'Veg-Tanned / Drum Dyed',
-      standards: 'Heavy Duty Industrial Spec',
-    },
+    substance: '3.2 - 4.0 mm',
+    rawOrigin: 'Buffalo / Heavy Cow Single Butts',
+    finishType: 'Vegetable Tanned / Drum Dyed',
+    compliance: 'Heavy Duty Industrial Grade',
     features: [
-      'Zero stretch under heavy load',
-      'Clean burnishing capabilities',
-      'Solid and uniform thickness across the hide',
+      'Zero elongation or stretch under tension',
+      'Smooth, burnishable raw edges',
+      'Consistent thickness throughout single/double butts',
     ],
   },
   {
@@ -66,16 +60,14 @@ const applicationsData = [
       'Cow and Buffalo lining materials in drum-dyed, semi-aniline and milled finishes.',
     image:
       'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&auto=format&fit=crop&q=80',
-    specs: {
-      substance: '0.7 - 1.1 mm',
-      origin: 'Cow / Goat / Buffalo',
-      finish: 'Drum Dyed / Milled',
-      standards: 'Sweat Resistant ISO 11641',
-    },
+    substance: '0.7 - 1.1 mm',
+    rawOrigin: 'Cow / Goat / Buffalo',
+    finishType: 'Drum Dyed / Milled',
+    compliance: 'Sweat Resistant ISO 11641',
     features: [
-      'Ultra-soft touch and high flexibility',
-      'Superior sweat absorption and breathability',
-      'Colorfast finish to prevent dye bleed',
+      'Ultra-soft feel for interior comfort',
+      'High moisture absorption and quick drying',
+      'Colorfast finish to prevent dye transfer',
     ],
   },
   {
@@ -85,16 +77,14 @@ const applicationsData = [
       'Whole-hide upholstery leather for furniture and decorative interiors.',
     image:
       'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop&q=80',
-    specs: {
-      substance: '0.9 - 1.4 mm',
-      origin: 'European / South American Cow',
-      finish: 'Pigmented / Semi-Aniline',
-      standards: 'BS 5852 Fire Retardant',
-    },
+    substance: '0.9 - 1.4 mm',
+    rawOrigin: 'European Bovine Hides',
+    finishType: 'Pigmented / Semi-Aniline',
+    compliance: 'BS 5852 Fire Retardant Standard',
     features: [
-      'Large hide yield averaging 45-55 sq.ft.',
-      'High resistance to abrasion and sunlight fade',
-      'Easy to maintain and clean',
+      'Large average hide yield (45-55 sq. ft.)',
+      'High resistance to UV light fading and abrasion',
+      'Easy-to-clean protective coating',
     ],
   },
   {
@@ -104,16 +94,14 @@ const applicationsData = [
       'Leather for automotive upholstery and interior applications.',
     image:
       'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&auto=format&fit=crop&q=80',
-    specs: {
-      substance: '1.1 - 1.4 mm',
-      origin: 'Selected Bovine Hides',
-      finish: 'UV-Protected / Low Fogging',
-      standards: 'ISO 105-B02 / OEM Specs',
-    },
+    substance: '1.1 - 1.4 mm',
+    rawOrigin: 'Selected Premium Bovine',
+    finishType: 'UV Protected / Low-Fogging',
+    compliance: 'ISO 105-B02 OEM Certified',
     features: [
-      'Extreme thermal and cold-crack resistance',
-      'Low VOC emissions for cabin safety',
-      'Scuff-resistant coating',
+      'Extreme temperature and crack resistance',
+      'Low VOC emissions for interior air quality',
+      'Scratch and scuff-resistant surface finish',
     ],
   },
   {
@@ -123,16 +111,14 @@ const applicationsData = [
       'Leather for aviation seating with dedicated performance and flame-retardant requirements.',
     image:
       'https://images.unsplash.com/photo-1506015391300-4802dc74de2e?w=800&auto=format&fit=crop&q=80',
-    specs: {
-      substance: '0.8 - 1.2 mm',
-      origin: 'Lightweight Bovine',
-      finish: 'Flame Retardant Aniline',
-      standards: 'FAR 25.853 (a) Aviation Certified',
-    },
+    substance: '0.8 - 1.2 mm',
+    rawOrigin: 'Lightweight Bovine Hides',
+    finishType: 'Flame Retardant Aniline',
+    compliance: 'FAR 25.853 (a) Aviation Certified',
     features: [
-      'Passes 12-second vertical burn testing',
-      'Lightweight formulation to minimize aircraft payload',
-      'High durability under frequent commercial usage',
+      'Passes strict 12-second vertical burn tests',
+      'Lightweight formulation to minimize payload weight',
+      'High abrasion resistance for frequent commercial use',
     ],
   },
   {
@@ -142,16 +128,14 @@ const applicationsData = [
       'Printed leather collections for fashion, footwear, bags and accessories.',
     image:
       'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800&auto=format&fit=crop&q=80',
-    specs: {
-      substance: '1.2 - 1.8 mm',
-      origin: 'Cow / Buffalo Hides',
-      finish: 'Embossed / Foil Stamped',
-      standards: 'Fashion Grade Custom Specs',
-    },
+    substance: '1.2 - 1.8 mm',
+    rawOrigin: 'Cow / Buffalo Hides',
+    finishType: 'Embossed / Foil Stamped / Printed',
+    compliance: 'Fashion Grade Custom Specs',
     features: [
-      'Custom repeat patterns and animal textures',
-      'Consistent plate impression depth',
-      'Vibrant color retention',
+      'Custom embossed textures and animal prints',
+      'Deep, consistent plate impression depth',
+      'Vibrant color retention across production batches',
     ],
   },
 ];
@@ -161,6 +145,7 @@ export default function Applications() {
 
   return (
     <section id="applications" className="container-shell py-12 sm:py-16">
+      {/* Cards Grid */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {applicationsData.map((item) => (
           <div
@@ -169,7 +154,7 @@ export default function Applications() {
             className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-6 shadow-sm transition-all duration-300 hover:border-teal/30 hover:shadow-md cursor-pointer"
           >
             <div>
-              {/* Category Image Box */}
+              {/* Category Online Image Box */}
               <div className="mb-5 h-12 w-12 overflow-hidden rounded-xl border border-stone-100 bg-stone-100 shadow-inner transition-transform duration-300 group-hover:scale-110">
                 <img
                   src={item.image}
@@ -181,16 +166,16 @@ export default function Applications() {
               {/* Title */}
               <h3 className="text-base font-bold text-ink">{item.title}</h3>
 
-              {/* Description */}
+              {/* Short Description */}
               <p className="mt-2.5 text-xs leading-5 text-stone-600">
                 {item.description}
               </p>
             </div>
 
-            {/* Bottom Action Label */}
+            {/* Bottom Button */}
             <div className="mt-6 flex items-center justify-between border-t border-stone-100 pt-4">
               <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-teal group-hover:underline">
-                View Collection Details
+                View Manufacturer Collection
               </span>
               <CheckCircle2 className="h-4 w-4 text-teal" />
             </div>
@@ -198,93 +183,117 @@ export default function Applications() {
         ))}
       </div>
 
-      {/* Professional B2B Modal Popup */}
+      {/* Side-by-Side Modal Popup (Image + Full Info) */}
       {selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm animate-fadeIn">
-          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 sm:p-8 shadow-2xl border border-stone-100">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
+          <div className="relative w-full max-w-3xl overflow-hidden rounded-2xl bg-white shadow-2xl border border-stone-100">
             {/* Close Button */}
             <button
               onClick={() => setSelectedItem(null)}
-              className="absolute right-4 top-4 rounded-full bg-stone-100 p-2 text-stone-500 hover:bg-stone-200 hover:text-stone-800 transition-colors"
+              className="absolute right-4 top-4 z-10 rounded-full bg-white/80 p-2 text-stone-600 shadow hover:bg-white hover:text-black transition-colors"
             >
               <X className="h-5 w-5" />
             </button>
 
-            {/* Header with Cover Image */}
-            <div className="relative h-48 w-full overflow-hidden rounded-xl bg-stone-100 mb-6">
-              <img
-                src={selectedItem.image}
-                alt={selectedItem.title}
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
-                <span className="rounded-md bg-teal px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-                  B2B Wholesale Specifications
-                </span>
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {/* Left Side: Large Product Image */}
+              <div className="relative h-64 md:h-full min-h-[320px] bg-stone-100">
+                <img
+                  src={selectedItem.image}
+                  alt={selectedItem.title}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-6">
+                  <span className="rounded-md bg-teal px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow">
+                    Leather Specification
+                  </span>
+                </div>
               </div>
-            </div>
 
-            {/* Title & Overview */}
-            <h3 className="text-2xl font-bold text-ink">{selectedItem.title}</h3>
-            <p className="mt-2 text-sm text-stone-600 leading-relaxed">
-              {selectedItem.description}
-            </p>
+              {/* Right Side: Information & Specs */}
+              <div className="p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold text-ink">
+                    {selectedItem.title}
+                  </h3>
+                  <p className="mt-2 text-xs leading-5 text-stone-600">
+                    {selectedItem.description}
+                  </p>
 
-            {/* Technical Specifications Grid */}
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <div className="rounded-xl border border-stone-200/80 bg-stone-50/50 p-3 text-center">
-                <Sliders className="mx-auto h-4 w-4 text-teal mb-1" />
-                <span className="block text-[10px] font-bold uppercase text-stone-400">Thickness</span>
-                <span className="text-xs font-bold text-ink">{selectedItem.specs.substance}</span>
-              </div>
-              <div className="rounded-xl border border-stone-200/80 bg-stone-50/50 p-3 text-center">
-                <Shield className="mx-auto h-4 w-4 text-teal mb-1" />
-                <span className="block text-[10px] font-bold uppercase text-stone-400">Raw Origin</span>
-                <span className="text-xs font-bold text-ink">{selectedItem.specs.origin}</span>
-              </div>
-              <div className="rounded-xl border border-stone-200/80 bg-stone-50/50 p-3 text-center">
-                <Award className="mx-auto h-4 w-4 text-teal mb-1" />
-                <span className="block text-[10px] font-bold uppercase text-stone-400">Finish</span>
-                <span className="text-xs font-bold text-ink">{selectedItem.specs.finish}</span>
-              </div>
-              <div className="rounded-xl border border-stone-200/80 bg-stone-50/50 p-3 text-center">
-                <CheckCircle2 className="mx-auto h-4 w-4 text-teal mb-1" />
-                <span className="block text-[10px] font-bold uppercase text-stone-400">Standards</span>
-                <span className="text-xs font-bold text-ink">{selectedItem.specs.standards}</span>
-              </div>
-            </div>
+                  {/* Specifications Grid */}
+                  <div className="mt-5 grid grid-cols-2 gap-2 border-y border-stone-100 py-4 text-xs">
+                    <div>
+                      <span className="block text-[10px] font-bold uppercase text-stone-400">
+                        Thickness
+                      </span>
+                      <span className="font-semibold text-stone-800">
+                        {selectedItem.substance}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="block text-[10px] font-bold uppercase text-stone-400">
+                        Raw Origin
+                      </span>
+                      <span className="font-semibold text-stone-800">
+                        {selectedItem.rawOrigin}
+                      </span>
+                    </div>
+                    <div className="mt-2">
+                      <span className="block text-[10px] font-bold uppercase text-stone-400">
+                        Finish Type
+                      </span>
+                      <span className="font-semibold text-stone-800">
+                        {selectedItem.finishType}
+                      </span>
+                    </div>
+                    <div className="mt-2">
+                      <span className="block text-[10px] font-bold uppercase text-stone-400">
+                        Standards
+                      </span>
+                      <span className="font-semibold text-stone-800">
+                        {selectedItem.compliance}
+                      </span>
+                    </div>
+                  </div>
 
-            {/* Key Features List */}
-            <div className="mt-6 rounded-xl border border-stone-200/80 bg-stone-50/30 p-4">
-              <h4 className="text-xs font-bold uppercase text-teal tracking-wider mb-2">
-                Key Performance Characteristics
-              </h4>
-              <ul className="space-y-2">
-                {selectedItem.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-xs text-stone-700">
-                    <CheckCircle2 className="mr-2 h-3.5 w-3.5 text-teal shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  {/* Features List */}
+                  <div className="mt-4">
+                    <h4 className="flex items-center text-[11px] font-bold uppercase tracking-wider text-teal">
+                      <ShieldCheck className="mr-1.5 h-4 w-4" />
+                      Key Product Features
+                    </h4>
+                    <ul className="mt-2 space-y-1.5">
+                      {selectedItem.features.map((feat, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start text-xs text-stone-700 leading-normal"
+                        >
+                          <span className="mr-2 text-teal font-bold">•</span>
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
 
-            {/* Action Buttons */}
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#contact"
-                onClick={() => setSelectedItem(null)}
-                className="flex-1 flex items-center justify-center rounded-xl bg-teal py-3 text-xs font-bold uppercase tracking-wider text-white shadow-sm hover:opacity-90 transition-opacity"
-              >
-                Request Custom Sample / Quote
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-              <button
-                onClick={() => setSelectedItem(null)}
-                className="rounded-xl border border-stone-200 bg-white px-6 py-3 text-xs font-bold uppercase tracking-wider text-stone-600 hover:bg-stone-50 transition-colors"
-              >
-                Close
-              </button>
+                {/* Footer Buttons */}
+                <div className="mt-6 flex items-center gap-3">
+                  <a
+                    href="#contact"
+                    onClick={() => setSelectedItem(null)}
+                    className="flex-1 inline-flex items-center justify-center rounded-xl bg-teal py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:opacity-90 transition-opacity"
+                  >
+                    Inquire Now
+                    <ArrowRight className="ml-1.5 h-4 w-4" />
+                  </a>
+                  <button
+                    onClick={() => setSelectedItem(null)}
+                    className="rounded-xl border border-stone-200 px-4 py-2.5 text-xs font-bold uppercase text-stone-600 hover:bg-stone-50"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
