@@ -160,12 +160,12 @@ export default function ApplicationsSection() {
             className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-stone-200/80 bg-white p-6 shadow-sm transition-all duration-300 hover:border-teal/30 hover:shadow-md cursor-pointer"
           >
             <div>
-              {/* Product Image */}
-              <div className="mb-4 h-14 w-14 overflow-hidden rounded-xl bg-stone-100">
+              {/* Updated Banner Style Image Container */}
+              <div className="mb-4 h-32 w-full overflow-hidden rounded-xl bg-stone-100">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-center"
                 />
               </div>
 
@@ -189,7 +189,7 @@ export default function ApplicationsSection() {
         ))}
       </div>
 
-      {/* OVERLAY POPUP MODAL (Page Change Nhi Hoga) */}
+      {/* OVERLAY POPUP MODAL */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
           <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white p-6 sm:p-8 shadow-2xl animate-in fade-in zoom-in duration-200">
