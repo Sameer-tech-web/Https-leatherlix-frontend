@@ -95,7 +95,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Stats Section */}
+      {/* Stats Cards Section */}
       <div className="mt-12 grid grid-cols-2 divide-x divide-y divide-stone-200/80 rounded-2xl border border-stone-200/80 bg-white shadow-sm sm:grid-cols-4 sm:divide-y-0">
         
         {/* 1. Premium Block */}
@@ -137,13 +137,16 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* 4. Gold Certificate Image Block */}
-        <div className="flex flex-col items-center justify-center p-4 text-center sm:p-6">
+        {/* 4. Gold Image + Gold Text + Label */}
+        <div className="flex flex-col items-center justify-center p-6 text-center sm:p-8">
           <img
             src="/assets/lwg-gold.svg.jpg"
             alt="LWG Gold Certificate"
-            className="h-20 w-auto object-contain sm:h-24"
+            className="mb-1 h-14 w-auto object-contain sm:h-16"
           />
+          <span className="text-3xl font-black tracking-tight text-amber-600 sm:text-4xl">
+            {factsList[3]?.value || 'Gold'}
+          </span>
           <p className="mt-2 max-w-[170px] text-[9px] font-bold uppercase leading-tight tracking-[0.14em] text-stone-500">
             {factsList[3]?.label || 'LWG ENVIRONMENTAL RATING'}
           </p>
