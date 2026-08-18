@@ -108,10 +108,10 @@ const complianceGroups = [
 
 const accentClasses = {
   teal: { icon: 'bg-teal/10 text-teal', badge: 'bg-teal/90' },
-  green: { icon: 'bg-emerald-500/10 text-emerald-600', badge: 'bg-emerald-600' },
-  blue: { icon: 'bg-sky-500/10 text-sky-600', badge: 'bg-sky-600' },
-  coral: { icon: 'bg-coral/10 text-coral', badge: 'bg-coral' },
-  gold: { icon: 'bg-amber-500/10 text-amber-600', badge: 'bg-amber-600' },
+  green: { icon: 'bg-emerald-500/10 text-emerald-600', badge: 'bg-emerald-600/90' },
+  blue: { icon: 'bg-sky-500/10 text-sky-600', badge: 'bg-sky-600/90' },
+  coral: { icon: 'bg-coral/10 text-coral', badge: 'bg-coral/90' },
+  gold: { icon: 'bg-amber-500/10 text-amber-600', badge: 'bg-amber-600/90' },
 };
 
 export default function ComplianceSection() {
@@ -185,15 +185,14 @@ export default function ComplianceSection() {
                       key={item}
                       className="group relative overflow-hidden rounded-xl border border-stone-200 bg-stone-50/50 transition-all duration-300 hover:border-teal/30 hover:bg-white hover:shadow-card"
                     >
-                      {/* Certificate Preview Image */}
-                      <div className="h-36 w-full overflow-hidden bg-stone-200 relative">
+                      {/* Certificate Preview Image Container */}
+                      <div className="relative h-40 w-full overflow-hidden rounded-t-xl bg-stone-100">
                         <img
                           src={cert.image}
                           alt={item}
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                        <span className={`absolute bottom-2 left-3 rounded ${colors.badge} px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white`}>
+                        <span className={`absolute bottom-2 left-2 rounded ${colors.badge} px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-sm`}>
                           Verified Audit
                         </span>
                       </div>
