@@ -7,7 +7,7 @@ export const brand = {
   tagline: 'Premium B2B Leather Supply',
   email: 'info@leatherlix.com',
   supplierLabel: 'PREMIUM LEATHER SUPPLIER',
-  phone: '+92-000-0000000',
+  phone: '+92 318 1400877',
   manufacturer: 'Near Children Hospital, Multan, Pakistan',
   manufacturerUrl: '',
 };
