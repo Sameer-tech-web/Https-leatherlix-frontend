@@ -26,6 +26,10 @@ export const navLinks = [
     href: '#collections',
   },
   {
+    name: 'Digital Catalog',
+    href: '#digital-catalog',
+  },
+  {
     name: 'About',
     href: '#about',
   },
@@ -48,6 +52,229 @@ export const navLinks = [
 ];
 
 /* =========================================================
+   BELTING LEATHER VOL. 4 DIGITAL CATALOG DATA (16 ARTICLES)
+========================================================= */
+
+export const beltingCatalog = {
+  title: "Belting Leather Collection - Vol. 4",
+  subtitle: "Premium River Bison Belting Cuts",
+  standardSpecs: {
+    size: "Single Butt",
+    thickness: "3.2–3.5 mm",
+  },
+  articles: [
+    {
+      id: 1,
+      name: "BRUSH",
+      pageNumber: "01",
+      mainImage: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "TAN / NATURAL",
+      swatches: [
+        { name: "PORTO", color: "#4A1525" },
+        { name: "BLACK", color: "#111111" },
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "INDIGO", color: "#1C2D42" }
+      ]
+    },
+    {
+      id: 2,
+      name: "SLEATH",
+      pageNumber: "02",
+      mainImage: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "PONY",
+      swatches: [
+        { name: "PORTO", color: "#4A1525" },
+        { name: "BLACK", color: "#111111" },
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "INDIGO", color: "#1C2D42" }
+      ]
+    },
+    {
+      id: 3,
+      name: "FLESH",
+      pageNumber: "03",
+      mainImage: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "BLACK",
+      swatches: [
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "PORTO", color: "#4A1525" },
+        { name: "PONY", color: "#8B5A2B" },
+        { name: "INDIGO", color: "#1C2D42" }
+      ]
+    },
+    {
+      id: 4,
+      name: "WILD",
+      pageNumber: "04",
+      mainImage: "https://images.unsplash.com/photo-1524383712472-34042886618d?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "PORTO",
+      swatches: [
+        { name: "BLACK", color: "#111111" },
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "PONY", color: "#8B5A2B" },
+        { name: "INDIGO", color: "#1C2D42" }
+      ]
+    },
+    {
+      id: 5,
+      name: "GRANUALA",
+      pageNumber: "05",
+      mainImage: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "PORTO",
+      swatches: [
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "INDIGO", color: "#1C2D42" },
+        { name: "BLACK", color: "#111111" },
+        { name: "PONY", color: "#8B5A2B" }
+      ]
+    },
+    {
+      id: 6,
+      name: "VINTAGE",
+      pageNumber: "06",
+      mainImage: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "MOROCCO",
+      swatches: [
+        { name: "BLACK", color: "#111111" },
+        { name: "PORTO", color: "#4A1525" },
+        { name: "PONY", color: "#8B5A2B" },
+        { name: "INDIGO", color: "#1C2D42" }
+      ]
+    },
+    {
+      id: 7,
+      name: "GRUNGY",
+      pageNumber: "07",
+      mainImage: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "PONY",
+      swatches: [
+        { name: "PORTO", color: "#4A1525" },
+        { name: "BLACK", color: "#111111" },
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "INDIGO", color: "#1C2D42" }
+      ]
+    },
+    {
+      id: 8,
+      name: "SHRUNKEN",
+      pageNumber: "08",
+      mainImage: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "INDIGO",
+      swatches: [
+        { name: "BLACK", color: "#111111" },
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "PORTO", color: "#4A1525" },
+        { name: "PONY", color: "#8B5A2B" }
+      ]
+    },
+    {
+      id: 9,
+      name: "SAFFIANO",
+      pageNumber: "09",
+      mainImage: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "BLACK",
+      swatches: [
+        { name: "PORTO", color: "#4A1525" },
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "INDIGO", color: "#1C2D42" },
+        { name: "PONY", color: "#8B5A2B" }
+      ]
+    },
+    {
+      id: 10,
+      name: "BURBERRY",
+      pageNumber: "10",
+      mainImage: "https://images.unsplash.com/photo-1524383712472-34042886618d?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "MOROCCO",
+      swatches: [
+        { name: "BLACK", color: "#111111" },
+        { name: "PORTO", color: "#4A1525" },
+        { name: "PONY", color: "#8B5A2B" },
+        { name: "INDIGO", color: "#1C2D42" }
+      ]
+    },
+    {
+      id: 11,
+      name: "ZYDAN",
+      pageNumber: "11",
+      mainImage: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "PORTO",
+      swatches: [
+        { name: "BLACK", color: "#111111" },
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "INDIGO", color: "#1C2D42" },
+        { name: "PONY", color: "#8B5A2B" }
+      ]
+    },
+    {
+      id: 12,
+      name: "BRUSH EMBOSSED",
+      pageNumber: "12",
+      mainImage: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "PONY",
+      swatches: [
+        { name: "PORTO", color: "#4A1525" },
+        { name: "BLACK", color: "#111111" },
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "INDIGO", color: "#1C2D42" }
+      ]
+    },
+    {
+      id: 13,
+      name: "SHRUNKEN EFFECT",
+      pageNumber: "13",
+      mainImage: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "BLACK",
+      swatches: [
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "PORTO", color: "#4A1525" },
+        { name: "INDIGO", color: "#1C2D42" },
+        { name: "PONY", color: "#8B5A2B" }
+      ]
+    },
+    {
+      id: 14,
+      name: "NUBUCK",
+      pageNumber: "14",
+      mainImage: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "PONY",
+      swatches: [
+        { name: "BLACK", color: "#111111" },
+        { name: "PORTO", color: "#4A1525" },
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "INDIGO", color: "#1C2D42" }
+      ]
+    },
+    {
+      id: 15,
+      name: "RIDER",
+      pageNumber: "15",
+      mainImage: "https://images.unsplash.com/photo-1524383712472-34042886618d?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "MOROCCO",
+      swatches: [
+        { name: "BLACK", color: "#111111" },
+        { name: "PORTO", color: "#4A1525" },
+        { name: "PONY", color: "#8B5A2B" },
+        { name: "INDIGO", color: "#1C2D42" }
+      ]
+    },
+    {
+      id: 16,
+      name: "PULL UP F/G ANILINE",
+      pageNumber: "16",
+      mainImage: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&auto=format&fit=crop&q=80",
+      mainColorLabel: "PORTO",
+      swatches: [
+        { name: "BLACK", color: "#111111" },
+        { name: "MOROCCO", color: "#3B2319" },
+        { name: "INDIGO", color: "#1C2D42" },
+        { name: "PONY", color: "#8B5A2B" }
+      ]
+    }
+  ]
+};
+
+/* =========================================================
    COMPLETE PRODUCT CATEGORIES
 ========================================================= */
 
@@ -58,7 +285,6 @@ export const categories = [
     short: 'Cow & River Bison upper leathers',
     description:
       'Upper leathers for dress shoes, casual shoes, Nubuck footwear, boots, work boots, tactical boots and Western boots.',
-    // ✅ Updated: Footwear / Boots Image
     image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&auto=format&fit=crop&q=80',
     page: '/category/american',
     specifications: [
@@ -121,7 +347,6 @@ export const categories = [
     short: 'River Bison whole-hide upholstery',
     description:
       'Whole-hide upholstery leather for furniture and decorative leather applications, including finished and dyed-crust options.',
-    // ✅ Updated: Upholstery / Furniture Image
     image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&auto=format&fit=crop&q=80',
     page: '/category/upholstery',
     specifications: [
@@ -149,12 +374,12 @@ export const categories = [
     name: 'Belts Leather',
     short: 'Single Butts, Double Butts & Doze',
     description:
-      'River Bison belting leather with smooth and embossed finishing effects, averaging around 3.5–4.0 mm.',
+      'River Bison belting leather with smooth and embossed finishing effects, averaging around 3.2–3.5 mm.',
     image: '/assets/belt-detail.jpg',
     page: '/category/belts',
     specifications: [
       { label: 'Origin / Raw Material', value: 'River Bison Heavy Cuts' },
-      { label: 'Thickness Range', value: '3.5 – 4.0 mm (Heavy Substance)' },
+      { label: 'Thickness Range', value: '3.2 – 3.5 mm (Heavy Substance)' },
       { label: 'Cut Types', value: 'Single Butts, Double Butts & Doze' },
       { label: 'Tannage Type', value: 'Vegetable & Heavy Re-tanned' },
       { label: 'Finish Types', value: 'Smooth, Embossed & Vintage Polish' },
@@ -270,7 +495,7 @@ export const heroFacts = [
   },
   {
     label: 'Average Belt Leather Thickness',
-    value: '3.5–4.0 mm',
+    value: '3.2–3.5 mm',
   },
   {
     label: 'LWG Environmental Rating',
@@ -510,7 +735,7 @@ export const catalogLinks = [
     items: [
       { title: 'Belts Leather', url: '/category/belts' },
       { title: 'Belt Leather Vol. 3', url: '/category/belts' },
-      { title: 'Belt Leather Vol. 4', url: '/category/belts' },
+      { title: 'Belt Leather Vol. 4', url: '#digital-catalog' },
     ],
   },
   {
